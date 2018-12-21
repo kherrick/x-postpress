@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Tests</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <script src="../../node_modules/mocha/mocha.js"></script>
+    <script src="../../node_modules/wct-mocha/wct-mocha.js"></script>
+  </head>
+  <body>
+    <script>
+      WCT.loadSuites([
+        // Load 'x-postpress.html' test suite, using native shadow dom
+        'x-postpress.html',
+        // Load 'x-postpress.html' test suite, using shadydom
+        'x-postpress.html?wc-shadydom=true&wc-ce=true',
+        'views-a11y.html',
+        'views-a11y.html?wc-shadydom=true&wc-ce=true',
+      ])
+    </script>
+  </body>
+</html>

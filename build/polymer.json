@@ -1,0 +1,97 @@
+{
+  "entrypoint": "index.html",
+  "shell": "src/components/x-postpress.js",
+  "fragments": [],
+  "sources": [
+    "images/**/*",
+    ".nojekyll",
+    "robots.txt",
+    "index.html",
+    "src/components/x-postpress.js"
+  ],
+  "extraDependencies": [
+    "bower_components/webcomponentsjs/*.js",
+    "manifest.json",
+    "node_modules/@webcomponents/webcomponentsjs/**",
+    "node_modules/fetch-polyfill/fetch.js"
+  ],
+  "builds": [
+    {
+      "name": "esm-bundled",
+      "basePath": "/",
+      "browserCapabilities": [
+        "es2015",
+        "modules",
+        "serviceworker"
+      ],
+      "js": {
+        "minify": true
+      },
+      "css": {
+        "minify": true
+      },
+      "html": {
+        "minify": true
+      },
+      "bundle": true,
+      "addServiceWorker": true
+    },
+    {
+      "name": "es6-bundled",
+      "basePath": "/",
+      "browserCapabilities": [
+        "es2015",
+        "serviceworker"
+      ],
+      "js": {
+        "compile": "es2015",
+        "minify": true,
+        "transformModulesToAmd": true
+      },
+      "css": {
+        "minify": true
+      },
+      "html": {
+        "minify": true
+      },
+      "bundle": true,
+      "addServiceWorker": true
+    },
+    {
+      "name": "es5-bundled",
+      "basePath": "/",
+      "js": {
+        "compile": "es5",
+        "minify": true,
+        "transformModulesToAmd": true
+      },
+      "css": {
+        "minify": true
+      },
+      "html": {
+        "minify": true
+      },
+      "bundle": {
+        "inlineCss": true,
+        "inlineScripts": true,
+        "rewriteUrlsInTemplates": true,
+        "sourcemaps": true,
+        "stripComments": true
+      },
+      "addServiceWorker": true
+    }
+  ],
+  "lint": {
+    "rules": [
+      "polymer-3"
+    ],
+    "warningsToIgnore": [
+      "non-literal-import",
+      "potential-element-naming-issue",
+      "undefined-elements"
+    ]
+  },
+  "npm": true,
+  "componentDir": "node_modules/",
+  "moduleResolution": "node"
+}

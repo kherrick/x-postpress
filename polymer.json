@@ -1,0 +1,89 @@
+{
+  "builds": [{
+      "name": "esm-bundled",
+      "basePath": true,
+      "browserCapabilities": [
+        "es2015",
+        "modules",
+        "serviceworker"
+      ],
+      "js": {
+        "minify": true
+      },
+      "css": {
+        "minify": true
+      },
+      "html": {
+        "minify": true
+      },
+      "bundle": true,
+      "addServiceWorker": true
+    },
+    {
+      "name": "es6-bundled",
+      "basePath": true,
+      "browserCapabilities": [
+        "es2015",
+        "serviceworker"
+      ],
+      "js": {
+        "compile": "es2015",
+        "minify": true,
+        "transformModulesToAmd": true
+      },
+      "css": {
+        "minify": true
+      },
+      "html": {
+        "minify": true
+      },
+      "bundle": true,
+      "addServiceWorker": true
+    },
+    {
+      "name": "es5-bundled",
+      "basePath": true,
+      "js": {
+        "compile": "es5",
+        "minify": true,
+        "transformModulesToAmd": true
+      },
+      "css": {
+        "minify": true
+      },
+      "html": {
+        "minify": true
+      },
+      "bundle": {
+        "inlineCss": true,
+        "inlineScripts": true,
+        "rewriteUrlsInTemplates": true,
+        "sourcemaps": true,
+        "stripComments": true
+      },
+      "addServiceWorker": true
+    }
+  ],
+  "entrypoint": "index.html",
+  "extraDependencies": [
+    "manifest.json",
+    "node_modules/@webcomponents/webcomponentsjs/**",
+    "node_modules/fetch-polyfill/fetch.js"
+  ],
+  "lint": {
+    "rules": ["polymer-3"],
+    "ignoreWarnings": [
+      "non-literal-import",
+      "potential-element-naming-issue",
+      "undefined-elements"
+    ]
+  },
+  "moduleResolution": "node",
+  "npm": true,
+  "shell": "src/components/x-postpress.js",
+  "sources": [
+    "./images/**/*",
+    "./.nojekyll",
+    "./robots.txt"
+  ]
+}

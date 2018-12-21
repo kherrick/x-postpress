@@ -1,0 +1,40 @@
+{
+  "parser": "babel-eslint",
+  "plugins": [
+    "prettier"
+  ],
+  "env": {
+    "browser": true,
+    "node": true,
+    "es6": true
+  },
+  "extends": [
+    "plugin:prettier/recommended"
+  ],
+  "globals": {
+    "afterEach": false,
+    "before": false,
+    "beforeAll": false,
+    "beforeEach": false,
+    "describe": false,
+    "expect": false,
+    "test": false
+  },
+  "parserOptions": {
+    "sourceType": "module"
+  },
+  "rules": {
+    "prettier/prettier": [
+      1, {
+        "arrowParens": "avoid",
+        "bracketSpacing": true,
+        "jsxBracketSameLine": false,
+        "parser": "babylon",
+        "printWidth": 120,
+        "semi": false,
+        "singleQuote": true,
+        "trailingComma": "none"
+      }
+    ]
+  }
+}

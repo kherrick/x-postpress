@@ -1,0 +1,40 @@
+#!/bin/bash -e
+
+readonly SCRIPT_SOURCE="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+
+cd "${SCRIPT_SOURCE}/.." || exit 1
+
+if [[ -z "$BASE_PATH" ]]; then
+  readonly BASE_PATH='/'
+fi
+
+if [[ "$1" != "true" ]]; then
+  readonly UUID="$(uuidgen)"
+
+  # update polymer.json to reflect a different basepath
+  cp ./polymer.json "./polymer.json.${UUID}"
+
+  sed -i.bak "s#\"basePath\": true,#\"basePath\": \"${BASE_PATH}\",#g" ./polymer.json
+
+
+  # update manifest.json to reflect a different basepath
+  cp ./manifest.json "./manifest.json.${UUID}"
+
+  sed -i.bak "s#\"start_url\": \"/\"#\"start_url\": \"${BASE_PATH}\"#g" ./manifest.json
+  sed -i.bak "s#src\": \"images#src\": \"${BASE_PATH}images#g" ./manifest.json
+
+  # run polymer build with the new files
+  npx polymer build
+
+  # cleanup polymer.json file manipulations
+  mv "./polymer.json.${UUID}" ./polymer.json \
+    && rm polymer.json.bak
+
+  # cleanup manifest.json file manipulations
+  mv "./manifest.json.${UUID}" ./manifest.json \
+    && rm manifest.json.bak
+
+  exit 0
+fi
+
+npx polymer build
