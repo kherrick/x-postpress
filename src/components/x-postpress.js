@@ -1,3 +1,4 @@
+import { formatDate } from '../utilities/misc.js'
 import { LitElement, html } from '/node_modules/@polymer/lit-element/lit-element.js'
 import { unsafeHTML } from '/node_modules/lit-html/directives/unsafe-html.js'
 import { until } from '/node_modules/lit-html/directives/until.js'
@@ -31,19 +32,11 @@ const Loading = html`
   <article><h1>Loading...</h1></article>
 `
 
-const Article = ({ content, date, link, title }) => html`
+const Article = ({ content, date_gmt, link, title }) => html`
   <article>
-    <h1>
-      ${
-        unsafeHTML(`
-        <a href="${link.replace('content.', '')}">
-          ${title.rendered}
-        </a>
-      `)
-      }
-    </h1>
-    <h2>${new Date(date)}</h2>
-    <p>${unsafeHTML(content.rendered)}</p>
+    <h1>${unsafeHTML(`<a href="${link.replace('content.', '')}">${title['rendered']}</a>`)}</h1>
+    <h2>${formatDate(date_gmt)}</h2>
+    <p>${unsafeHTML(content['rendered'])}</p>
     <hr />
   </article>
 `

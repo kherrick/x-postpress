@@ -1,4 +1,4 @@
-const { interceptNetworkRequests, wait } = require('../utilities')
+const { generateBaselineScreenshots, interceptNetworkRequests } = require('../utilities')
 const { startServer } = require('polyserve')
 const baselineDir = `${process.cwd()}/test/integration/screenshots-baseline`
 const fs = require('fs')
@@ -6,7 +6,7 @@ const path = require('path')
 const posts = require('../../fixtures/posts/common')
 const puppeteer = require('puppeteer')
 
-describe('🎁 regenerate screenshots', function() {
+describe('🎁 regenerate screenshots', () => {
   let polyserve, browser, page
 
   before(async function() {
@@ -44,35 +44,6 @@ describe('🎁 regenerate screenshots', function() {
   afterEach(() => browser.close())
 
   it('did it', async function() {
-    return generateBaselineScreenshots(page)
+    return generateBaselineScreenshots(baselineDir, page)
   })
 })
-
-async function generateBaselineScreenshots(page) {
-  const breakpoints = [
-    {
-      width: 800,
-      height: 600
-    },
-    {
-      width: 375,
-      height: 667
-    }
-  ]
-  const prefixes = ['wide', 'narrow']
-
-  for (let i = 0; i < prefixes.length; i++) {
-    const prefix = prefixes[i]
-    console.log(prefix + '...')
-
-    page.setViewport(breakpoints[i])
-
-    // Index.
-    await page.goto('http://127.0.0.1:4444/')
-
-    // investigate not waiting here
-    await wait(3000)
-
-    await page.screenshot({ path: `${baselineDir}/${prefix}/index.png` })
-  }
-}
