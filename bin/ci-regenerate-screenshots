@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+readonly SCRIPT_SOURCE="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+
+cd "${SCRIPT_SOURCE}/.." || exit 1
+
+docker run -it --rm -v "$(pwd)":/x-postpress kherrick/x-postpress-test:latest bash -c 'sudo npm run test:regenerate_screenshots'

@@ -33,7 +33,9 @@ describe('🎁 regenerate screenshots', () => {
   after(done => polyserve.close(done))
 
   beforeEach(async function() {
-    browser = await puppeteer.launch()
+    browser = await puppeteer.launch({
+      args: ['--no-sandbox', '--disable-setuid-sandbox']
+    })
   })
 
   afterEach(() => browser.close())

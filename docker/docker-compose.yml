@@ -1,0 +1,12 @@
+services:
+  x-postpress-test:
+    build:
+      context: ../
+      dockerfile: docker/Dockerfile
+    container_name: x-postpress-test
+    image: kherrick/x-postpress-test:latest
+    restart: 'no'
+    stdin_open: true
+    volumes:
+    - ../:/x-postpress:rw
+version: '3.2'
