@@ -29,7 +29,6 @@
         let xPostpress
 
         beforeEach(() => {
-          console.log('THIS IS POSTS', posts)
           fetchMock.get('https://demo.wp-api.org/wp-json/wp/v2/posts', posts);
 
           xPostpress = fixture('basic')
@@ -42,7 +41,7 @@
           fetchMock.restore()
         })
 
-        it('has articles property defaulted to 0', () => {
+        it('has articles property length defaulted to 0', () => {
           assert.equal(xPostpress.articles.length, 0)
         })
 

@@ -1,4 +1,5 @@
-const { generateBaselineScreenshots, interceptNetworkRequests } = require('../utilities')
+const { generateBaselineScreenshots } = require('../utilities/screenshots')
+const { interceptNetworkRequests } = require('../utilities/misc')
 const { startServer } = require('polyserve')
 const baselineDir = `${process.cwd()}/test/integration/screenshots-baseline`
 const fs = require('fs')

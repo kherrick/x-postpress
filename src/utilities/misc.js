@@ -1,7 +1,8 @@
 export const formatDate = timestring => {
   const pad = v => (v < 10 ? `0${v}` : v)
+  const dateString = timestring.split('T')[0]
+  const date = new Date(dateString)
 
-  const date = new Date(Date.parse(timestring))
   const weekday = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'][date.getUTCDay()]
   const day = pad(date.getUTCDate())
   const month = [

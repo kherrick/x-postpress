@@ -1,3 +1,4 @@
+const { wait } = require('./misc')
 const expect = require('chai').expect
 const fs = require('fs')
 const pixelmatch = require('pixelmatch')
@@ -36,6 +37,7 @@ const compareScreenshots = (baselineDir, currentDir, view) =>
 
       //diff.pack().pipe(fs.createWriteStream(`${currentDir}/${view}-diff.png`))
 
+      //@todo run the tests in the same environment, that captures the baseline screenshots
       expect(numDiffPixels, 'number of different pixels').lessThan(50)
 
       resolve()
@@ -60,18 +62,6 @@ const compareScreenshots = (baselineDir, currentDir, view) =>
       .pipe(new PNG())
       .on('parsed', doneReading)
   })
-
-const wait = async function(ms) {
-  return new Promise(resolve => {
-    console.log(`waiting for ${ms} millisecond(s)...`)
-
-    setTimeout(() => {
-      console.log('...no longer waiting, and moving on')
-
-      resolve()
-    }, ms)
-  })
-}
 
 module.exports = {
   generateBaselineScreenshots: async function(baselineDir, page) {
@@ -101,25 +91,6 @@ module.exports = {
 
       await page.screenshot({ path: `${baselineDir}/${prefix}/index.png` })
     }
-  },
-  interceptNetworkRequests: async function(page, payload, url) {
-    await page.setRequestInterception(true)
-
-    return page.on('request', request => {
-      if (request.url() === url) {
-        request.respond({
-          status: 200,
-          headers: {
-            'Access-Control-Allow-Headers': 'Content-Type',
-            'Access-Control-Allow-Origin': '*',
-            'Content-Type': 'application/json'
-          },
-          body: payload
-        })
-      } else {
-        request.continue()
-      }
-    })
   },
   takeAndCompareScreenshot: async function(baselineDir, currentDir, page, route, filePrefix) {
     // if you didn't specify a file, use the name of the route
