@@ -88,7 +88,7 @@
     </style>
   </head>
   <body>
-    <x-postpress id="x-postpress" apiUrl=""></x-postpress>
+    <x-postpress id="x-postpress" apiUrl="" siteUrl=""></x-postpress>
     <script>
         // URLSearchParams alternative: https://gist.github.com/kherrick/913f6844c5a42f95f6bb865a2bf97ded
         var queryParams = function(search) {
@@ -104,9 +104,9 @@
           );
         };
 
-        var defaultPostsUrl = 'https://example.com/wp-json/wp/v2/posts';
+        var defaultApiUrl = 'https://content.example.com/wp-json/wp/v2/posts';
         var getApiUrl = queryParams(window.location.search)['apiUrl'];
-        var apiUrl = typeof getApiUrl === 'undefined' ? defaultPostsUrl : getApiUrl;
+        var apiUrl = typeof getApiUrl === 'undefined' ? defaultApiUrl : getApiUrl;
 
         document
           .getElementById('x-postpress')
@@ -114,6 +114,18 @@
             'apiUrl',
             apiUrl
           );
+
+        var defaultSiteUrl = 'https://example.com/';
+        var getSiteUrl = queryParams(window.location.search)['siteUrl'];
+        var siteUrl = typeof getSiteUrl === 'undefined' ? defaultSiteUrl : getSiteUrl;
+
+        document
+          .getElementById('x-postpress')
+          .setAttribute(
+            'siteUrl',
+            siteUrl
+          );
+
       </script>
     <noscript>
       Please enable JavaScript to view this website.

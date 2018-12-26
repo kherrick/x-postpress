@@ -1,10 +1,8 @@
 const { generateBaselineScreenshots } = require('../utilities/screenshots')
-const { interceptNetworkRequests } = require('../utilities/misc')
 const { startServer } = require('polyserve')
 const baselineDir = `${process.cwd()}/test/integration/screenshots-baseline`
 const fs = require('fs')
 const path = require('path')
-const posts = require('../../fixtures/posts/common')
 const puppeteer = require('puppeteer')
 
 describe('🎁 regenerate screenshots', () => {
@@ -36,15 +34,11 @@ describe('🎁 regenerate screenshots', () => {
 
   beforeEach(async function() {
     browser = await puppeteer.launch()
-
-    page = await browser.newPage()
-
-    await interceptNetworkRequests(page, JSON.stringify(posts), 'https://example.com/wp-json/wp/v2/posts')
   })
 
   afterEach(() => browser.close())
 
   it('did it', async function() {
-    return generateBaselineScreenshots(baselineDir, page)
+    return generateBaselineScreenshots(baselineDir, browser)
   })
 })

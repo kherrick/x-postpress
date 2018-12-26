@@ -32,6 +32,10 @@ describe('👀 page screenshots are correct', () => {
     if (!fs.existsSync(`${currentDir}/narrow`)) {
       fs.mkdirSync(`${currentDir}/narrow`)
     }
+
+    if (!fs.existsSync(`${currentDir}/error`)) {
+      fs.mkdirSync(`${currentDir}/error`)
+    }
   })
 
   after(done => polyserve.close(done))
@@ -42,14 +46,14 @@ describe('👀 page screenshots are correct', () => {
     })
 
     page = await browser.newPage()
-
-    await interceptNetworkRequests(page, JSON.stringify(posts), 'https://example.com/wp-json/wp/v2/posts')
   })
 
   afterEach(() => browser.close())
 
   describe('wide screen', () => {
     beforeEach(async function() {
+      await interceptNetworkRequests(page, JSON.stringify(posts), 'https://content.example.com/wp-json/wp/v2/posts')
+
       return page.setViewport({ width: 800, height: 600 })
     })
 
@@ -60,11 +64,24 @@ describe('👀 page screenshots are correct', () => {
 
   describe('narrow screen', () => {
     beforeEach(async function() {
+      await interceptNetworkRequests(page, JSON.stringify(posts), 'https://content.example.com/wp-json/wp/v2/posts')
+
       return page.setViewport({ width: 375, height: 667 })
     })
 
     it('/index.html', async function() {
       return takeAndCompareScreenshot(baselineDir, currentDir, page, '', 'narrow')
+    })
+  })
+
+  // we're not intercepting network requests here, so the fetch should fail, and the error content should load
+  describe('error screen', () => {
+    beforeEach(async function() {
+      return page.setViewport({ width: 800, height: 600 })
+    })
+
+    it('/index.html', async function() {
+      return takeAndCompareScreenshot(baselineDir, currentDir, page, '', 'error')
     })
   })
 })
