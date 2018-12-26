@@ -1,5 +1,6 @@
-const { interceptNetworkRequests, takeAndCompareScreenshot } = require('./utilities')
+const { interceptNetworkRequests } = require('./utilities/misc')
 const { startServer } = require('polyserve')
+const { takeAndCompareScreenshot } = require('./utilities/screenshots')
 const fs = require('fs')
 const path = require('path')
 const posts = require('../fixtures/posts/common')
