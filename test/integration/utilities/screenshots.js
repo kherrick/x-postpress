@@ -1,8 +1,9 @@
-const { wait } = require('./misc')
+const { interceptNetworkRequests, wait } = require('./misc')
 const expect = require('chai').expect
 const fs = require('fs')
 const pixelmatch = require('pixelmatch')
 const PNG = require('pngjs').PNG
+const posts = require('../../fixtures/posts/common')
 
 const compareScreenshots = (baselineDir, currentDir, view) =>
   new Promise((resolve, reject) => {
@@ -38,7 +39,7 @@ const compareScreenshots = (baselineDir, currentDir, view) =>
       //diff.pack().pipe(fs.createWriteStream(`${currentDir}/${view}-diff.png`))
 
       //@todo run the tests in the same environment, that captures the baseline screenshots
-      expect(numDiffPixels, 'number of different pixels').lessThan(50)
+      expect(numDiffPixels, 'number of different pixels').lessThan(121)
 
       resolve()
     }
@@ -63,8 +64,20 @@ const compareScreenshots = (baselineDir, currentDir, view) =>
       .on('parsed', doneReading)
   })
 
+const setViewportAndTakeScreenshot = async function(breakpoint, filename, page) {
+  page.setViewport(breakpoint)
+
+  // index
+  await page.goto('http://127.0.0.1:4444/')
+
+  // investigate not waiting here
+  await wait(3000)
+
+  await page.screenshot({ path: filename })
+}
+
 module.exports = {
-  generateBaselineScreenshots: async function(baselineDir, page) {
+  generateBaselineScreenshots: async function(baselineDir, browser) {
     const prefixes = ['wide', 'narrow']
     const breakpoints = [
       {
@@ -78,19 +91,20 @@ module.exports = {
     ]
 
     for (let i = 0; i < prefixes.length; i++) {
-      const prefix = prefixes[i]
+      let prefix = prefixes[i]
       console.log(prefix + '...')
 
-      page.setViewport(breakpoints[i])
-
-      // index
-      await page.goto('http://127.0.0.1:4444/')
-
-      // investigate not waiting here
-      await wait(3000)
-
-      await page.screenshot({ path: `${baselineDir}/${prefix}/index.png` })
+      page = await browser.newPage()
+      await interceptNetworkRequests(page, JSON.stringify(posts), 'https://content.example.com/wp-json/wp/v2/posts')
+      await setViewportAndTakeScreenshot(breakpoints[i], `${baselineDir}/${prefix}/index.png`, page)
     }
+
+    prefix = 'error'
+    console.log(prefix + '...')
+
+    // we're not intercepting network requests here, so the fetch should fail, and the error content should load
+    page = await browser.newPage()
+    await setViewportAndTakeScreenshot(breakpoints[0], `${baselineDir}/${prefix}/index.png`, page)
   },
   takeAndCompareScreenshot: async function(baselineDir, currentDir, page, route, filePrefix) {
     // if you didn't specify a file, use the name of the route
