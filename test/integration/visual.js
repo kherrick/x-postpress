@@ -42,6 +42,7 @@ describe('👀 page screenshots are correct', () => {
 
   beforeEach(async function() {
     browser = await puppeteer.launch({
+      args: ['--no-sandbox', '--disable-setuid-sandbox']
       // headless: false, devtools: true, slowMo: 1000
     })
 

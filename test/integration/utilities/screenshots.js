@@ -38,8 +38,7 @@ const compareScreenshots = (baselineDir, currentDir, view) =>
 
       //diff.pack().pipe(fs.createWriteStream(`${currentDir}/${view}-diff.png`))
 
-      //@todo run the tests in the same environment, that captures the baseline screenshots
-      expect(numDiffPixels, 'number of different pixels').lessThan(121)
+      expect(numDiffPixels, 'number of different pixels').equal(0)
 
       resolve()
     }
