@@ -32,5 +32,5 @@ define(["exports"],function(_exports){"use strict";Object.defineProperty(_export
   </article>
 `,xPostpress=class extends LitElement{static get properties(){return{apiUrl:{type:String},siteUrl:{type:String}}}constructor(){super();this.articles=[]}render(){return html`
       ${Style}
-      ${until(fetch(this.apiUrl).then(res=>{if(res.ok){return res.json().then(json=>json.map(article=>{this.articles.push(article);return Article(article)}))}}).catch(err=>Article({date_gmt:new Date().toISOString(),link:this.siteUrl,title:{rendered:err},content:{rendered:"<p>Posts are unavailable. Please check the error and try again.</p>"}})),Loading)}
+      ${until(fetch(this.apiUrl).then(res=>{if(res.ok){return res.json().then(json=>json.map(article=>{this.articles.push(article);return Article(article)}))}throw new Error(`status: ${res.status}${res.statusText?` | statusText: ${res.statusText}`:""}`)}).catch(err=>Article({date_gmt:new Date().toISOString(),link:this.siteUrl,title:{rendered:err},content:{rendered:"<p>Posts are unavailable. Please check the error and try again.</p>"}})),Loading)}
     `}};window.customElements.define("x-postpress",xPostpress)});
