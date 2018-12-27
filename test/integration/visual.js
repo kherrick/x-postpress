@@ -75,6 +75,8 @@ describe('👀 page screenshots are correct', () => {
   })
 
   // we're not intercepting network requests here, so the fetch should fail, and the error content should load
+  // @todo - this test is brittle, because the screenshot needs updated frequently because of the changing date
+  // -- investigate mocking the response
   describe('error screen', () => {
     beforeEach(async function() {
       return page.setViewport({ width: 800, height: 600 })

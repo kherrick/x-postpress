@@ -75,6 +75,8 @@ const xPostpress = class extends LitElement {
                   })
                 )
               }
+
+              throw new Error(`status: ${res.status}${res.statusText ? ` | statusText: ${res.statusText}` : ''}`)
             })
             .catch(err =>
               Article({
