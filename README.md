@@ -9,19 +9,34 @@ x-postpress
 
   * Built to support Internet Explorer 11
 
+## Try
+
+  * Demo the element loading a WordPress REST API endpoint at [https://kherrick.github.io/x-postpress/](https://kherrick.github.io/x-postpress/)
+
 ## Usage
 
-* Test the provided [element](https://kherrick.github.io/x-postpress/)
-* Using the browser's devtools, change the `apiUrl` attribute within the `x-postpress` tag to render another REST API endpoint:
+* Load the custom element using a `script` tag
+  ```html
+  <script
+    type="module"
+    src="https://unpkg.com/x-postpress@latest/build/esm-bundled/src/components/x-postpress.js">
+  </script>
+  ```
+
+* Add the tag into the document. Try using the browser's devtools to change the `apiUrl` attribute within the `x-postpress` tag to render another REST API endpoint:
   ```html
   <x-postpress
-    apiUrl="https://content.example.com/wp-json/wp/v2/posts"
-    siteUrl="https://example.com/"
+    apiUrl="https://a.content.example.com/wp-json/wp/v2/posts"
+    siteUrl="https://a.example.com/"
   ></x-postpress>
   ```
-* Alternatively, override parameters by including them in the query string (example):
+* If using the included [index.html](index.html), a link can be created to the page, and the custom element attributes can be overridden by including them in the query string (example):
   ```html
-  <a href="https://kherrick.github.io/x-postpress/?apiUrl=https://another.content.example.com/wp-json/wp/v2/posts&siteUrl=https://another.example.com">another.example.com</a>
+  <a
+    href="https://kherrick.github.io/x-postpress/?apiUrl=https://b.content.example.com/wp-json/wp/v2/posts&siteUrl=https://b.example.com"
+  >
+    b.example.com
+  </a>
   ```
 
 [![Build Status](https://api.travis-ci.org/kherrick/x-postpress.svg?branch=master)](https://travis-ci.org/kherrick/x-postpress/)
