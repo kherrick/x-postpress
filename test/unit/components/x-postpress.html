@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>x-postpress</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <script src="../../../node_modules/@webcomponents/webcomponentsjs/webcomponents-bundle.js"></script>
+    <script src="../../../node_modules/chai/chai.js"></script>
+    <script src="../../../node_modules/mocha/mocha.js"></script>
+    <script src="../../../node_modules/wct-mocha/wct-mocha.js"></script>
+    <script src="../../../node_modules/fetch-mock/dist/es5/client-bundle.js"></script>
+  </head>
+  <body>
+    <test-fixture id="basic">
+      <template>
+        <x-postpress apiUrl="https://demo.wp-api.org/wp-json/wp/v2/posts"></x-postpress>
+      </template>
+    </test-fixture>
+
+    <test-fixture id="error">
+      <template>
+        <x-postpress></x-postpress>
+      </template>
+    </test-fixture>
+
+    <script type="module">
+      import '../../../src/components/x-postpress.js'
+      import '@polymer/test-fixture'
+      import posts from '../../fixtures/posts/esm.js'
+
+      describe('x-postpress basic tests', () => {
+        let xPostpress
+
+        before(() => {
+          fetchMock.get('https://demo.wp-api.org/wp-json/wp/v2/posts', posts);
+
+          xPostpress = fixture('basic')
+
+          // Make tests wait until element is rendered
+          return xPostpress.updateComplete
+        })
+
+        after(() => {
+          fetchMock.restore()
+        })
+
+        it('has the tagName property set correctly', () => {
+          assert.equal(xPostpress.tagName, 'X-POSTPRESS')
+        })
+
+        it('has header tag with "Hello world!" text after one second, when apiUrl attribute is specified and resolves', () => new Promise((res, rej) => {
+          setInterval(() => {
+            const firstArticle = xPostpress.shadowRoot.querySelector('article')
+            const firstChild = firstArticle.children[0]
+
+            assert.equal(firstChild.tagName, 'H1')
+            assert.equal(firstChild.innerText, 'Hello world!')
+
+            res()
+          }, 1000)
+        }))
+      })
+
+      describe('x-postpress error tests', () => {
+        it('has header tag with "Error" text after one second, with an unspecified apiUrl attribute', () => new Promise((res, rej) => {
+          let xPostpress = fixture('error')
+
+          xPostpress.updateComplete.then(() => {
+            setInterval(() => {
+              const firstArticle = xPostpress.shadowRoot.querySelector('article')
+              const firstChild = firstArticle.children[0]
+
+              assert.equal(firstChild.tagName, 'H1')
+              assert.equal(firstChild.innerText, 'Error')
+
+              res()
+            }, 1000)
+          })
+        }))
+      })
+    </script>
+  </body>
+</html>
