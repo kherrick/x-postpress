@@ -23,3 +23,7 @@ x-postpress
   ```html
   <a href="https://kherrick.github.io/x-postpress/?apiUrl=https://another.content.example.com/wp-json/wp/v2/posts&siteUrl=https://another.example.com">another.example.com</a>
   ```
+
+[![Build Status](https://api.travis-ci.org/kherrick/x-postpress.svg?branch=master)](https://travis-ci.org/kherrick/x-postpress/)
+
+<img alt="postpress logo" src="images/manifest/icon-48x48.png" width="32px" />
