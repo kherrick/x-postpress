@@ -23,3 +23,5 @@ export const formatDate = timestring => {
 
   return `${weekday}, ${day} ${month} ${year}`
 }
+
+export const getLink = link => (link ? link.replace('content.', '') : '')

@@ -7,7 +7,7 @@ x-postpress
 
   * Fetches [WordPress](https://wordpress.org/) posts from the [REST API](https://developer.wordpress.org/rest-api/) based on attributes set on the element, or parameters in the query string
 
-  * Built to support Internet Explorer 11
+  * [Built to support Internet Explorer 11](https://github.com/kherrick/x-postpress/tree/master/build/es5-bundled)
 
 ## Try
 
