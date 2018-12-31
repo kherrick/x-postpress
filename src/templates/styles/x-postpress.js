@@ -33,6 +33,7 @@ export default html`
     }
 
     img {
+      display: var(--img-display, initial);
       float: var(--img-float, initial);
       height: var(--img-height, initial);
       max-height: var(--img-max-height, initial);
