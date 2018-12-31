@@ -42,6 +42,7 @@ const customElement=tagName=>clazz=>{window.customElements.define(tagName,clazz)
     }
 
     img {
+      display: var(--img-display, initial);
       float: var(--img-float, initial);
       height: var(--img-height, initial);
       max-height: var(--img-max-height, initial);

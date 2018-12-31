@@ -42,6 +42,7 @@ define(["exports"],function(_exports){"use strict";Object.defineProperty(_export
     }
 
     img {
+      display: var(--img-display, initial);
       float: var(--img-float, initial);
       height: var(--img-height, initial);
       max-height: var(--img-max-height, initial);
