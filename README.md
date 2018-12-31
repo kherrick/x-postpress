@@ -39,6 +39,20 @@ x-postpress
   </a>
   ```
 
-[![Build Status](https://api.travis-ci.org/kherrick/x-postpress.svg?branch=master)](https://travis-ci.org/kherrick/x-postpress/)
+<div>
+  <a href="https://github.com/kherrick/x-postpress">
+    <img alt="postpress logo" src="images/manifest/icon-48x48.png" width="32px" />
+  </a>
+</div>
 
-<img alt="postpress logo" src="images/manifest/icon-48x48.png" width="32px" />
+<div>
+  <a href="https://www.webcomponents.org/element/x-postpress">
+    <img alt="published on webcomponents.org" src="https://img.shields.io/badge/webcomponents.org-published-blue.png" />
+  </a>
+</div>
+
+<div>
+  <a href="https://travis-ci.org/kherrick/x-postpress/">
+    <img alt="build status" src="https://api.travis-ci.org/kherrick/x-postpress.png?branch=master" />
+  </a>
+</div>
