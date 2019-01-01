@@ -3,9 +3,9 @@ x-postpress
 
 ## About
 
-  * x-postpress is a collection of Web Components using [lit-html](https://lit-html.polymer-project.org/) and [LitElement](https://lit-element.polymer-project.org/)
+  * A Web Component built using [LitElement](https://lit-element.polymer-project.org/)
 
-  * Fetches [WordPress](https://wordpress.org/) posts from the [REST API](https://developer.wordpress.org/rest-api/) based on attributes set on the element, or parameters in the query string
+  * Fetches [WordPress](https://wordpress.org/) posts [from the REST API]https://developer.wordpress.org/rest-api/reference/posts/#list-posts) based on attributes set on the element
 
   * [Built to support Internet Explorer 11](https://github.com/kherrick/x-postpress/tree/master/build/es5-bundled)
 
@@ -23,10 +23,10 @@ x-postpress
   </script>
   ```
 
-* Add the tag into the document. Try using the browser's devtools to change the `apiUrl` attribute within the `x-postpress` tag to render another REST API endpoint:
+* Add the tag into the document. Try using the browser's devtools to change the `apiUrl` attribute within the `x-postpress` tag to render another <a href="https://developer.wordpress.org/rest-api/reference/posts/#list-posts">REST API posts endpoint</a>:
   ```html
   <x-postpress
-    apiUrl="https://a.content.example.com/wp-json/wp/v2/posts"
+    apiUrl="https://a.content.example.com/wp-json/wp/v2/posts?per_page=1"
     siteUrl="https://a.example.com/"
   ></x-postpress>
   ```
