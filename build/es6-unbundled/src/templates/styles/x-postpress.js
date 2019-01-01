@@ -43,8 +43,13 @@ define(["exports","/node_modules/@polymer/lit-element/lit-element.js"],function(
       width: var(--img-width, auto);
     }
 
+    ul {
+      list-style-type: var(--ul-list-style-type, inherit);
+    }
+
     p {
       clear: var(--p-clear, inherit);
+      text-align: var(--p-text-align, inherit);
     }
   </style>
 `;_exports.default=_default});
