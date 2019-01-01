@@ -1,0 +1,96 @@
+{
+  "src/components/x-postpress.js": {
+    "node_modules/%40polymer/lit-element/lit-element.js": {
+      "type": "script",
+      "weight": 1
+    },
+    "node_modules/lit-html/lit-html.js": {
+      "type": "script",
+      "weight": 1
+    },
+    "node_modules/lit-html/lib/default-template-processor.js": {
+      "type": "script",
+      "weight": 1
+    },
+    "node_modules/lit-html/lib/parts.js": {
+      "type": "script",
+      "weight": 1
+    },
+    "node_modules/lit-html/lib/directive.js": {
+      "type": "script",
+      "weight": 1
+    },
+    "node_modules/lit-html/lib/dom.js": {
+      "type": "script",
+      "weight": 1
+    },
+    "node_modules/lit-html/lib/part.js": {
+      "type": "script",
+      "weight": 1
+    },
+    "node_modules/lit-html/lib/template-instance.js": {
+      "type": "script",
+      "weight": 1
+    },
+    "node_modules/lit-html/lib/template.js": {
+      "type": "script",
+      "weight": 1
+    },
+    "node_modules/lit-html/lib/template-result.js": {
+      "type": "script",
+      "weight": 1
+    },
+    "node_modules/lit-html/lib/render.js": {
+      "type": "script",
+      "weight": 1
+    },
+    "node_modules/lit-html/lib/template-factory.js": {
+      "type": "script",
+      "weight": 1
+    },
+    "node_modules/lit-html/lib/shady-render.js": {
+      "type": "script",
+      "weight": 1
+    },
+    "node_modules/lit-html/lib/modify-template.js": {
+      "type": "script",
+      "weight": 1
+    },
+    "node_modules/%40polymer/lit-element/lib/updating-element.js": {
+      "type": "script",
+      "weight": 1
+    },
+    "node_modules/%40polymer/lit-element/lib/decorators.js": {
+      "type": "script",
+      "weight": 1
+    },
+    "node_modules/lit-html/directives/until.js": {
+      "type": "script",
+      "weight": 1
+    },
+    "src/templates/articles/articles.js": {
+      "type": "script",
+      "weight": 1
+    },
+    "src/templates/articles/article.js": {
+      "type": "script",
+      "weight": 1
+    },
+    "src/utilities/misc.js": {
+      "type": "script",
+      "weight": 1
+    },
+    "node_modules/lit-html/directives/unsafe-html.js": {
+      "type": "script",
+      "weight": 1
+    },
+    "src/templates/loading.js": {
+      "type": "script",
+      "weight": 1
+    },
+    "src/templates/styles/x-postpress.js": {
+      "type": "script",
+      "weight": 1
+    }
+  }
+}

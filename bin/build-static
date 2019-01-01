@@ -21,7 +21,6 @@ if [[ "$1" != "true" ]]; then
   cp ./manifest.json "./manifest.json.${UUID}"
 
   sed -i.bak "s#\"start_url\": \"/\"#\"start_url\": \"${BASE_PATH}\"#g" ./manifest.json
-  sed -i.bak "s#src\": \"images#src\": \"${BASE_PATH}images#g" ./manifest.json
 
   # run polymer build with the new files
   npx polymer build

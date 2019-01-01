@@ -1,5 +1,7 @@
 {
-  "builds": [{
+  "builds": [
+    { "preset": "uncompiled-unbundled" },
+    {
       "name": "esm-bundled",
       "basePath": true,
       "browserCapabilities": [
@@ -19,6 +21,7 @@
       "bundle": true,
       "addServiceWorker": true
     },
+    { "preset": "es6-unbundled" },
     {
       "name": "es6-bundled",
       "basePath": true,
