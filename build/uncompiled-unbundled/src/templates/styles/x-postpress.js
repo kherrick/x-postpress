@@ -33,12 +33,14 @@ import{html}from"/node_modules/@polymer/lit-element/lit-element.js";export defau
     img {
       display: var(--img-display, inherit);
       float: var(--img-float, inherit);
+      height: var(--img-height, auto);
       max-height: var(--img-max-height, inherit);
-      max-width: var(--img-max-width, inherit);
+      max-width: var(--img-max-width, 100%);
       padding-bottom: var(--img-padding-bottom, inherit);
       padding-left: var(--img-padding-left, inherit);
       padding-right: var(--img-padding-right, inherit);
       padding-top: var(--img-padding-top, inherit);
+      width: var(--img-width, auto);
     }
 
     p {
