@@ -17,6 +17,27 @@
   ],
   "builds": [
     {
+      "name": "uncompiled-unbundled",
+      "browserCapabilities": [
+        "es2018",
+        "modules",
+        "push"
+      ],
+      "js": {
+        "minify": true
+      },
+      "css": {
+        "minify": true
+      },
+      "html": {
+        "minify": true
+      },
+      "bundle": false,
+      "addServiceWorker": true,
+      "addPushManifest": true,
+      "preset": "uncompiled-unbundled"
+    },
+    {
       "name": "esm-bundled",
       "basePath": "/",
       "browserCapabilities": [
@@ -35,6 +56,28 @@
       },
       "bundle": true,
       "addServiceWorker": true
+    },
+    {
+      "name": "es6-unbundled",
+      "browserCapabilities": [
+        "es2015",
+        "push"
+      ],
+      "js": {
+        "minify": true,
+        "compile": "es2015",
+        "transformModulesToAmd": true
+      },
+      "css": {
+        "minify": true
+      },
+      "html": {
+        "minify": true
+      },
+      "bundle": false,
+      "addServiceWorker": true,
+      "addPushManifest": true,
+      "preset": "es6-unbundled"
     },
     {
       "name": "es6-bundled",
