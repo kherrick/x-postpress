@@ -14,7 +14,7 @@ export default html`
     }
 
     article {
-      clear: var(--article-clear, initial);
+      clear: var(--article-clear, inherit);
       margin-bottom: var(--article-margin-bottom, 1rem);
       margin-left: var(--article-margin-left, auto);
       margin-right: var(--article-margin-right, auto);
@@ -33,21 +33,18 @@ export default html`
     }
 
     img {
-      display: var(--img-display, initial);
-      float: var(--img-float, initial);
-      height: var(--img-height, initial);
-      max-height: var(--img-max-height, initial);
-      max-width: var(--img-max-width, initial);
-      padding-bottom: var(--img-padding-bottom, initial);
-      padding-left: var(--img-padding-left, initial);
-      padding-right: var(--img-padding-right, initial);
-      padding-top: var(--img-padding-top, initial);
-      width: var(--img-width, initial);
-      width: var(--img-width, initial);
+      display: var(--img-display, inherit);
+      float: var(--img-float, inherit);
+      max-height: var(--img-max-height, inherit);
+      max-width: var(--img-max-width, inherit);
+      padding-bottom: var(--img-padding-bottom, inherit);
+      padding-left: var(--img-padding-left, inherit);
+      padding-right: var(--img-padding-right, inherit);
+      padding-top: var(--img-padding-top, inherit);
     }
 
     p {
-      clear: var(--p-clear, initial);
+      clear: var(--p-clear, inherit);
     }
   </style>
 `
