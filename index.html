@@ -5,6 +5,10 @@
     <title>x-postpress</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="x-postpress">
+
+    <!-- open the page in "edge" mode in Internet Explorer -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
     <!--
       The `<base>` tag below is present to support two advanced deployment options:
       1) Differential serving. 2) Serving from a non-root path.
@@ -54,29 +58,16 @@
     <script>
       // Load and register pre-caching Service Worker
       if ('serviceWorker' in navigator) {
-        window.addEventListener('load', function() {
-          const basePath = document.getElementsByTagName('base')[0].href
-
+        window.addEventListener('load', () => {
           navigator.serviceWorker.register('service-worker.js', {
-            scope: basePath,
-          });
-        });
+            scope: document.getElementsByTagName('base')[0].href,
+          })
+        })
       }
     </script>
 
     <!-- Add any global styles for body, document, etc. -->
     <style>
-      @font-face {
-        font-family: 'Pacifico';
-        font-style: normal;
-        font-weight: 400;
-        src: local('Pacifico Regular'), local('Pacifico-Regular'), url(https://fonts.gstatic.com/s/pacifico/v12/Q_Z9mv4hySLTMoMjnk_rCXYhjbSpvc47ee6xR_80Hnw.woff2) format('woff2');
-        /* The browser draws the text immediately in the fallback font if the font
-           isn't loaded, then swaps it with the webfont when it eventually loads
-           See: https://developers.google.com/web/updates/2016/02/font-display
-        */
-        font-display: swap;
-      }
       body {
         margin: 0;
         /* This is a font-stack that tries to use the system-default sans-serifs first */
@@ -88,61 +79,22 @@
     </style>
   </head>
   <body>
-    <x-postpress id="x-postpress" apiUrl="" siteUrl=""></x-postpress>
-    <script>
-        // URLSearchParams alternative: https://gist.github.com/kherrick/913f6844c5a42f95f6bb865a2bf97ded
-        var queryParams = function(search) {
-          return search.split('&').reduce(
-            function (q, query) {
-              var chunks = query.split('=');
-              var key = chunks[0];
-              var value = chunks[1];
-
-              return (q[key.replace(/^\?/, '')] = value, q);
-            },
-            {}
-          );
-        };
-
-        var defaultApiUrl = 'https://content.example.com/wp-json/wp/v2/posts';
-        var getApiUrl = queryParams(window.location.search)['apiUrl'];
-        var apiUrl = typeof getApiUrl === 'undefined' ? defaultApiUrl : getApiUrl;
-
-        document
-          .getElementById('x-postpress')
-          .setAttribute(
-            'apiUrl',
-            apiUrl
-          );
-
-        var defaultSiteUrl = 'https://example.com/';
-        var getSiteUrl = queryParams(window.location.search)['siteUrl'];
-        var siteUrl = typeof getSiteUrl === 'undefined' ? defaultSiteUrl : getSiteUrl;
-
-        document
-          .getElementById('x-postpress')
-          .setAttribute(
-            'siteUrl',
-            siteUrl
-          );
-
-      </script>
-    <noscript>
-      Please enable JavaScript to view this website.
-    </noscript>
-    <!-- Load webcomponents-loader.js to check and load any polyfills your browser needs -->
+    <x-postpress-app siteTitle="x-postpress-app"></x-postpress-app>
     <script src="node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
-    <!-- Polyfill for IE11, see https://github.com/webcomponents/webcomponentsjs for more info-->
     <script type="module">
-      const basePath = document.getElementsByTagName('base')[0].href
+      const basePath = document.getElementsByTagName('base')[0].href;
 
+      // Polyfill for IE11, see https://github.com/webcomponents/webcomponentsjs for more info
       WebComponents.waitFor(async () => {
         if (!window.fetch) {
           await import(basePath + 'node_modules/fetch-polyfill/fetch.js');
         }
 
-        return import(basePath + 'src/components/x-postpress.js');
-      })
+        return import(basePath + 'src/app.js');
+      });
     </script>
+    <noscript>
+      Please enable JavaScript to view this website.
+    </noscript>
   </body>
 </html>

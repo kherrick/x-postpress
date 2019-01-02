@@ -53,5 +53,9 @@ export default html`
       clear: var(--p-clear, inherit);
       text-align: var(--p-text-align, inherit);
     }
+
+    pre {
+      overflow: auto;
+    }
   </style>
 `

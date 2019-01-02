@@ -13,15 +13,25 @@ x-postpress
 
   * Demo the element loading a WordPress REST API endpoint at [https://kherrick.github.io/x-postpress/](https://kherrick.github.io/x-postpress/)
 
-## Usage
+## Use
 
-* Load the custom element using a `script` tag
-  ```html
-  <script
-    type="module"
-    src="https://unpkg.com/x-postpress@latest/build/esm-bundled/src/components/x-postpress.js">
-  </script>
-  ```
+* Add the Web Component to the project (unpkg and npm examples)
+  1. load the custom element using a `script` tag (from unpkg):
+      ```html
+      <script
+        type="module"
+        src="https://unpkg.com/x-postpress@latest/build/esm-bundled/src/components/x-postpress.js">
+      </script>
+      ```
+  2. Alternatively, try adding using the command line...
+      ```bash
+      npm i x-postpress
+      ```
+      ...then import the module from another file:
+
+      ```javascript
+      import 'x-postpress'
+      ```
 
 * Add the tag into the document. Try using the browser's devtools to change the `apiUrl` attribute within the `x-postpress` tag to render another <a href="https://developer.wordpress.org/rest-api/reference/posts/#list-posts">REST API posts endpoint</a>:
   ```html
@@ -30,6 +40,9 @@ x-postpress
     siteUrl="https://a.example.com/"
   ></x-postpress>
   ```
+
+* Other examples are available on [a dedicated branch](https://github.com/kherrick/x-postpress/tree/unpkg/src)
+
 * If using the included [index.html](index.html), a link can be created to the page, and the custom element attributes can be overridden by including them in the query string (example):
   ```html
   <a
@@ -38,7 +51,6 @@ x-postpress
     b.example.com
   </a>
   ```
-* Examples using unpkg are available on [a dedicated branch](https://github.com/kherrick/x-postpress/tree/unpkg/src).
 
 <div>
   <a href="https://github.com/kherrick/x-postpress">
