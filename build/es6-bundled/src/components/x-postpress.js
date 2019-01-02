@@ -54,8 +54,13 @@ define(["exports"],function(_exports){"use strict";Object.defineProperty(_export
       width: var(--img-width, auto);
     }
 
+    ul {
+      list-style-type: var(--ul-list-style-type, inherit);
+    }
+
     p {
       clear: var(--p-clear, inherit);
+      text-align: var(--p-text-align, inherit);
     }
   </style>
 `;_exports.$xPostpressDefault=styles;var xPostpress={default:styles};_exports.$xPostpress$1=xPostpress;const xPostpress$1=class extends LitElement{static get properties(){return{apiUrl:{type:String},siteUrl:{type:String}}}constructor(){super()}render(){return html`

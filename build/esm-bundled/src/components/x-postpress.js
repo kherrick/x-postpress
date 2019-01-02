@@ -54,8 +54,13 @@ const customElement=tagName=>clazz=>{window.customElements.define(tagName,clazz)
       width: var(--img-width, auto);
     }
 
+    ul {
+      list-style-type: var(--ul-list-style-type, inherit);
+    }
+
     p {
       clear: var(--p-clear, inherit);
+      text-align: var(--p-text-align, inherit);
     }
   </style>
 `,xPostpress={default:styles};const xPostpress$1=class extends LitElement{static get properties(){return{apiUrl:{type:String},siteUrl:{type:String}}}constructor(){super()}render(){return html`

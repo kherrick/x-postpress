@@ -45,8 +45,13 @@ export default html`
       width: var(--img-width, auto);
     }
 
+    ul {
+      list-style-type: var(--ul-list-style-type, inherit);
+    }
+
     p {
       clear: var(--p-clear, inherit);
+      text-align: var(--p-text-align, inherit);
     }
   </style>
 `
