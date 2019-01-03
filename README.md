@@ -5,7 +5,7 @@ x-postpress
 
   * A Web Component built using [LitElement](https://lit-element.polymer-project.org/)
 
-  * Fetches [WordPress](https://wordpress.org/) posts [from the REST API]https://developer.wordpress.org/rest-api/reference/posts/#list-posts) based on attributes set on the element
+  * Fetches [WordPress](https://wordpress.org/) posts [from the REST API](https://developer.wordpress.org/rest-api/reference/posts/#list-posts) based on attributes set on the element
 
   * [Built to support Internet Explorer 11](https://github.com/kherrick/x-postpress/tree/master/build/es5-bundled)
 
