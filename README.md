@@ -38,6 +38,7 @@ x-postpress
     b.example.com
   </a>
   ```
+* Examples using unpkg are available on [a dedicated branch](https://github.com/kherrick/x-postpress/tree/unpkg/src).
 
 <div>
   <a href="https://github.com/kherrick/x-postpress">
