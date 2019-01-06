@@ -51,5 +51,9 @@ import{html}from"/node_modules/@polymer/lit-element/lit-element.js";export defau
       clear: var(--p-clear, inherit);
       text-align: var(--p-text-align, inherit);
     }
+
+    pre {
+      overflow: auto;
+    }
   </style>
 `;

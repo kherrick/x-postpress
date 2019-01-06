@@ -70,7 +70,7 @@ const setViewportAndTakeScreenshot = async function(breakpoint, filename, page) 
   await page.goto('http://127.0.0.1:4444/')
 
   // investigate not waiting here
-  await wait(3000)
+  await wait(5000)
 
   await page.screenshot({ path: filename })
 }
@@ -112,7 +112,7 @@ module.exports = {
     await page.goto(`http://127.0.0.1:4444/${route}`)
 
     // investigate not waiting here
-    await wait(3000)
+    await wait(5000)
 
     await page.screenshot({ path: `${currentDir}/${fileName}.png` })
 

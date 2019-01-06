@@ -62,6 +62,10 @@ const customElement=tagName=>clazz=>{window.customElements.define(tagName,clazz)
       clear: var(--p-clear, inherit);
       text-align: var(--p-text-align, inherit);
     }
+
+    pre {
+      overflow: auto;
+    }
   </style>
 `,xPostpress={default:styles};const xPostpress$1=class extends LitElement{static get properties(){return{apiUrl:{type:String},siteUrl:{type:String}}}constructor(){super()}render(){return html`
       ${styles}
