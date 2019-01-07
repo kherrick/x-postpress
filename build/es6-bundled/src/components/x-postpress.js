@@ -68,6 +68,5 @@ define(["exports"],function(_exports){"use strict";Object.defineProperty(_export
     }
   </style>
 `;_exports.$xPostpressDefault=styles;var xPostpress={default:styles};_exports.$xPostpress$1=xPostpress;const xPostpress$1=class extends LitElement{static get properties(){return{apiUrl:{type:String},siteUrl:{type:String}}}constructor(){super()}render(){return html`
-      ${styles}
-      ${until(articles({apiUrl:this.apiUrl,siteUrl:this.siteUrl}),loading)}
+      ${styles}<slot name="articles"></slot>${until(articles({apiUrl:this.apiUrl,siteUrl:this.siteUrl}),loading)}
     `}};window.customElements.define("x-postpress",xPostpress$1)});

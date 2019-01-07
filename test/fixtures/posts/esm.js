@@ -1,28 +1,27 @@
 export default [
   {
     id: 1,
-    date: '2017-05-23T06:25:50',
-    date_gmt: '2017-05-23T06:25:50',
+    date: '1970-01-01T00:00:00',
+    date_gmt: '1970-01-01T00:00:00',
     guid: {
-      rendered: 'http://demo.wp-api.org/?p=1'
+      rendered: 'http://content.example.com/?p=1'
     },
-    modified: '2017-05-23T06:25:50',
-    modified_gmt: '2017-05-23T06:25:50',
-    slug: 'hello-world',
+    modified: '1970-01-01T00:00:00',
+    modified_gmt: '1970-01-01T00:00:00',
+    slug: 'example',
     status: 'publish',
     type: 'post',
-    link: 'https://demo.wp-api.org/2017/05/23/hello-world/',
+    link: 'https://content.example.com/1970/01/01/example/',
     title: {
-      rendered: 'Hello world!'
+      rendered: 'Example!'
     },
     content: {
       rendered:
-        '<p>Welcome to <a href="http://wp-api.org/">WP API Demo Sites</a>. This is your first post. Edit or delete it, then start blogging!</p>\n',
+        '<p>Welcome to <a href="http://example.com/">Example</a>. This is your first post. Edit or delete it, then start blogging!</p>\n',
       protected: false
     },
     excerpt: {
-      rendered:
-        '<p>Welcome to WP API Demo Sites. This is your first post. Edit or delete it, then start blogging!</p>\n',
+      rendered: '<p>Welcome to Example. This is your first post. Edit or delete it, then start blogging!</p>\n',
       protected: false
     },
     author: 1,
@@ -38,52 +37,52 @@ export default [
     _links: {
       self: [
         {
-          href: 'https://demo.wp-api.org/wp-json/wp/v2/posts/1'
+          href: 'https://content.example.com/wp-json/wp/v2/posts/1'
         }
       ],
       collection: [
         {
-          href: 'https://demo.wp-api.org/wp-json/wp/v2/posts'
+          href: 'https://content.example.com/wp-json/wp/v2/posts'
         }
       ],
       about: [
         {
-          href: 'https://demo.wp-api.org/wp-json/wp/v2/types/post'
+          href: 'https://content.example.com/wp-json/wp/v2/types/post'
         }
       ],
       author: [
         {
           embeddable: true,
-          href: 'https://demo.wp-api.org/wp-json/wp/v2/users/1'
+          href: 'https://content.example.com/wp-json/wp/v2/users/1'
         }
       ],
       replies: [
         {
           embeddable: true,
-          href: 'https://demo.wp-api.org/wp-json/wp/v2/comments?post=1'
+          href: 'https://content.example.com/wp-json/wp/v2/comments?post=1'
         }
       ],
       'version-history': [
         {
           count: 0,
-          href: 'https://demo.wp-api.org/wp-json/wp/v2/posts/1/revisions'
+          href: 'https://content.example.com/wp-json/wp/v2/posts/1/revisions'
         }
       ],
       'wp:attachment': [
         {
-          href: 'https://demo.wp-api.org/wp-json/wp/v2/media?parent=1'
+          href: 'https://content.example.com/wp-json/wp/v2/media?parent=1'
         }
       ],
       'wp:term': [
         {
           taxonomy: 'category',
           embeddable: true,
-          href: 'https://demo.wp-api.org/wp-json/wp/v2/categories?post=1'
+          href: 'https://content.example.com/wp-json/wp/v2/categories?post=1'
         },
         {
           taxonomy: 'post_tag',
           embeddable: true,
-          href: 'https://demo.wp-api.org/wp-json/wp/v2/tags?post=1'
+          href: 'https://content.example.com/wp-json/wp/v2/tags?post=1'
         }
       ],
       curies: [

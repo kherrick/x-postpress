@@ -18,13 +18,6 @@ const xPostpressApp = class extends LitElement {
 
   constructor() {
     super()
-
-    // set properties based on the query string parameters
-    const siteUrlParam = this._queryParams(window.location.search)['siteUrl']
-    this.siteUrl = typeof siteUrlParam === 'undefined' ? 'https://kherrick.github.io/x-postpress/' : siteUrlParam
-
-    const apiUrlParam = this._queryParams(window.location.search)['apiUrl']
-    this.apiUrl = typeof apiUrlParam === 'undefined' ? 'https://example.com/wp-json/wp/v2/posts' : apiUrlParam
   }
 
   firstUpdated() {
@@ -34,24 +27,6 @@ const xPostpressApp = class extends LitElement {
       drawer.style.display = 'inherit'
       drawer.toggle()
     }
-
-    // x-postpress was failing to fetch articles in IE11 as the apiUrl attribute was not available
-    // as a property (when declared directly in the template) on the element when first rendered
-    // - this seems to work around that problem
-    const xPostpress = this.shadowRoot.querySelector('x-postpress')
-    xPostpress.apiUrl = this.apiUrl
-    xPostpress.siteUrl = this.siteUrl
-  }
-
-  // URLSearchParams alternative: https://gist.github.com/kherrick/913f6844c5a42f95f6bb865a2bf97ded
-  _queryParams(search) {
-    return search.split('&').reduce((q, query) => {
-      const chunks = query.split('=')
-      const key = chunks[0]
-      const value = chunks[1]
-
-      return (q[key.replace(/^\?/, '')] = value), q
-    }, {})
   }
 
   render() {
@@ -65,22 +40,8 @@ const xPostpressApp = class extends LitElement {
           </div>
         </app-toolbar>
       </app-header>
-      <app-drawer id="drawer" swipe-open>
-        <div id="drawer-child">
-          <ul>
-            <li>
-              <h2>Featured Posts</h2>
-              <div>
-                <ul>
-                  <li><a href="https://content.example.com/1970/01/01/example-article-1/">Example Article 1</a></li>
-                  <li><a href="https://content.example.com/1970/01/02/example-article-2/">Example Article 2</a></li>
-                </ul>
-              </div>
-            </li>
-          </ul>
-        </div>
-      </app-drawer>
-      <x-postpress></x-postpress>
+      <app-drawer swipe-open><slot name="app-drawer-children"></slot></app-drawer>
+      <slot name="x-postpress"></slot>
     `
   }
 }

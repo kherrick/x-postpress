@@ -18,10 +18,7 @@ x-postpress
 * Add the Web Component to the project (unpkg and npm examples)
   1. load the custom element using a `script` tag (from unpkg):
       ```html
-      <script
-        type="module"
-        src="https://unpkg.com/x-postpress@latest/build/esm-bundled/src/components/x-postpress.js">
-      </script>
+      <script type="module" src="https://unpkg.com/x-postpress"></script>
       ```
   2. Alternatively, try adding using the command line...
       ```bash
@@ -33,23 +30,40 @@ x-postpress
       import 'x-postpress'
       ```
 
-* Add the tag into the document. Try using the browser's devtools to change the `apiUrl` attribute within the `x-postpress` tag to render another <a href="https://developer.wordpress.org/rest-api/reference/posts/#list-posts">REST API posts endpoint</a>:
+* Add the tag into the document and style using <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_variables">CSS custom properties</a>. Articles can be included with the provided <a href="https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_templates_and_slots">slot element</a>:
   ```html
+  <style>
+    x-postpress {
+      --ul-list-style-type: none;
+    }
+  </style>
+
   <x-postpress
-    apiUrl="https://a.content.example.com/wp-json/wp/v2/posts?per_page=1"
-    siteUrl="https://a.example.com/"
-  ></x-postpress>
+    apiUrl="https://content.example.com/wp-json/wp/v2/posts?per_page=1"
+    siteUrl="https://example.com/"
+  >
+    <div slot="articles">
+      <article>
+        <h1><a href="https://example.com/1970/01/01/slotted/">
+          Article
+        </a></h1>
+        <h2>Thursday, 01 January 1970</h2>
+        <p>Lorem ipsum dolor sit amet</p>
+        <hr>
+      </article>
+    </div>
+  </x-postpress>
   ```
+
+## Misc
 
 * Other examples are available on [a dedicated branch](https://github.com/kherrick/x-postpress/tree/unpkg/src)
 
+* Try using the browser's devtools to change the `apiUrl` attribute within the `x-postpress` tag to render another <a href="https://developer.wordpress.org/rest-api/reference/posts/#list-posts">REST API posts endpoint</a>
+
 * If using the included [index.html](index.html), a link can be created to the page, and the custom element attributes can be overridden by including them in the query string (example):
   ```html
-  <a
-    href="https://kherrick.github.io/x-postpress/?apiUrl=https://b.content.example.com/wp-json/wp/v2/posts&siteUrl=https://b.example.com"
-  >
-    b.example.com
-  </a>
+  <a href="http://localhost:8081/?apiUrl=https://content.example.com/wp-json/wp/v2/posts&siteUrl=https://example.com">example.com</a>
   ```
 
 <div>
