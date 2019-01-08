@@ -22,8 +22,7 @@ const xPostpress = class extends LitElement {
 
   render() {
     return html`
-      ${styles}
-      ${
+      ${styles}<slot name="articles"></slot>${
         until(
           articles({
             apiUrl: this.apiUrl,

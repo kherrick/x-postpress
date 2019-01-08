@@ -53,7 +53,11 @@ describe('👀 page screenshots are correct', () => {
 
   describe('wide screen', () => {
     beforeEach(async function() {
-      await interceptNetworkRequests(page, JSON.stringify(posts), 'https://content.example.com/wp-json/wp/v2/posts')
+      await interceptNetworkRequests(
+        page,
+        JSON.stringify(posts),
+        'https://content.example.com/wp-json/wp/v2/posts?include=1'
+      )
 
       return page.setViewport({ width: 800, height: 600 })
     })
@@ -65,7 +69,11 @@ describe('👀 page screenshots are correct', () => {
 
   describe('narrow screen', () => {
     beforeEach(async function() {
-      await interceptNetworkRequests(page, JSON.stringify(posts), 'https://content.example.com/wp-json/wp/v2/posts')
+      await interceptNetworkRequests(
+        page,
+        JSON.stringify(posts),
+        'https://content.example.com/wp-json/wp/v2/posts?include=1'
+      )
 
       return page.setViewport({ width: 375, height: 667 })
     })

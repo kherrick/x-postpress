@@ -55,12 +55,5 @@ export default html`
       list-style-type: disc;
       margin-left: 0.5rem;
     }
-
-    #drawer-child {
-      background-color: #111111;
-      color: #cccccc;
-      height: 100%;
-      overflow: auto;
-    }
   </style>
 `

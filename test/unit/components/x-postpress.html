@@ -14,7 +14,7 @@
   <body>
     <test-fixture id="basic">
       <template>
-        <x-postpress apiUrl="https://demo.wp-api.org/wp-json/wp/v2/posts"></x-postpress>
+        <x-postpress apiUrl="https://content.example.com/wp-json/wp/v2/posts?include=1"></x-postpress>
       </template>
     </test-fixture>
 
@@ -33,7 +33,7 @@
         let xPostpress
 
         before(() => {
-          fetchMock.get('https://demo.wp-api.org/wp-json/wp/v2/posts', posts);
+          fetchMock.get('https://content.example.com/wp-json/wp/v2/posts?include=1', posts);
 
           xPostpress = fixture('basic')
 
@@ -49,13 +49,13 @@
           assert.equal(xPostpress.tagName, 'X-POSTPRESS')
         })
 
-        it('has header tag with "Hello world!" text after one second, when apiUrl attribute is specified and resolves', () => new Promise((res, rej) => {
+        it('has header tag with "Example!" text after one second, when apiUrl attribute is specified and resolves', () => new Promise((res, rej) => {
           setInterval(() => {
             const firstArticle = xPostpress.shadowRoot.querySelector('article')
             const firstChild = firstArticle.children[0]
 
             assert.equal(firstChild.tagName, 'H1')
-            assert.equal(firstChild.innerText, 'Hello world!')
+            assert.equal(firstChild.innerText, 'Example!')
 
             res()
           }, 1000)
