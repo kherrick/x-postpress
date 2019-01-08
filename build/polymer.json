@@ -1,13 +1,13 @@
 {
   "entrypoint": "index.html",
-  "shell": "src/components/x-postpress.js",
+  "shell": "src/app.js",
   "fragments": [],
   "sources": [
     "images/**/*",
     ".nojekyll",
     "robots.txt",
     "index.html",
-    "src/components/x-postpress.js"
+    "src/app.js"
   ],
   "extraDependencies": [
     "bower_components/webcomponentsjs/*.js",

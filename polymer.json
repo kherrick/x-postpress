@@ -83,7 +83,7 @@
   },
   "moduleResolution": "node",
   "npm": true,
-  "shell": "src/components/x-postpress.js",
+  "shell": "src/app.js",
   "sources": [
     "./images/**/*",
     "./.nojekyll",
