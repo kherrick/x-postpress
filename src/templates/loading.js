@@ -1,5 +1,5 @@
 import { getLink } from '../utilities/misc.js'
-import { html } from '/node_modules/@polymer/lit-element/lit-element.js'
+import { html } from '/node_modules/lit-element/lit-element.js'
 
 export default html`
   <article>

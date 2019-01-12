@@ -1,5 +1,5 @@
 import { formatDate, getLink } from '../../utilities/misc.js'
-import { html } from '/node_modules/@polymer/lit-element/lit-element.js'
+import { html } from '/node_modules/lit-element/lit-element.js'
 import { unsafeHTML } from '/node_modules/lit-html/directives/unsafe-html.js'
 
 export default ({ content, date_gmt, errorMessage, link, title }) => html`

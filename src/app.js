@@ -4,7 +4,7 @@ import '/node_modules/@polymer/app-layout/app-drawer/app-drawer.js'
 import '/node_modules/@polymer/app-layout/app-header/app-header.js'
 import '/node_modules/@polymer/app-layout/app-toolbar/app-toolbar.js'
 import '/node_modules/@polymer/polymer/lib/elements/custom-style.js'
-import { LitElement, html } from '/node_modules/@polymer/lit-element/lit-element.js'
+import { LitElement, html } from '/node_modules/lit-element/lit-element.js'
 import styles from './templates/styles/app.js'
 
 const xPostpressApp = class extends LitElement {

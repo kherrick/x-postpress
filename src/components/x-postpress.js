@@ -1,4 +1,4 @@
-import { LitElement, html } from '/node_modules/@polymer/lit-element/lit-element.js'
+import { LitElement, html } from '/node_modules/lit-element/lit-element.js'
 import { until } from '/node_modules/lit-html/directives/until.js'
 import articles from '../templates/articles/articles.js'
 import loading from '../templates/loading.js'
