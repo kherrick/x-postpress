@@ -9,5 +9,7 @@ if [[ "$CI" != "true" ]]; then
 fi
 
 docker run -it --rm -v "$(pwd)":/x-postpress kherrick/x-postpress-test:latest bash -c 'sudo npm i --unsafe-perm' \
- && docker run -it --rm -v "$(pwd)":/x-postpress kherrick/x-postpress-test:latest bash -c 'sudo npm run test:unit' \
- && docker run -it --rm -v "$(pwd)":/x-postpress kherrick/x-postpress-test:latest bash -c 'sudo npm run test:integration'
+  && docker run -it --rm -v "$(pwd)":/x-postpress kherrick/x-postpress-test:latest bash -c 'sudo npm run test:unit' \
+  && docker run -it --rm -v "$(pwd)":/x-postpress kherrick/x-postpress-test:latest bash -c 'sudo npm run test:integration' \
+  && docker run -it --rm -e SAUCE_ACCESS_KEY="$SAUCE_ACCESS_KEY" -e SAUCE_USERNAME="$SAUCE_USERNAME" \
+    -v "$(pwd)":/x-postpress kherrick/x-postpress-test:latest bash -c 'sudo SAUCE_ACCESS_KEY="$SAUCE_ACCESS_KEY" SAUCE_USERNAME="$SAUCE_USERNAME" npm run test:sauce'
