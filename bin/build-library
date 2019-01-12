@@ -9,7 +9,12 @@ if [[ -z "$BASE_PATH" ]]; then
 fi
 
 if [[ "$1" != "true" ]]; then
-  readonly UUID="$(uuidgen)"
+  declare UUID
+  if [[ $(command -v uuidgen) ]]; then
+    UUID="$(uuidgen)"
+  else
+    UUID="$(date +'%s')"
+  fi
 
   # update polymer.json to reflect a different basepath
   cp ./polymer.json "./polymer.json.${UUID}"
