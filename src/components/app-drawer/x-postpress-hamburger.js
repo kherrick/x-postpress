@@ -1,4 +1,4 @@
-import { LitElement, html } from '/node_modules/@polymer/lit-element/lit-element.js'
+import { LitElement, html } from '/node_modules/lit-element/lit-element.js'
 import styles from '../../templates/styles/x-postpress-hamburger.js'
 
 export default window.customElements.define(
