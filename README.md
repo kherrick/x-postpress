@@ -73,6 +73,12 @@ x-postpress
 </div>
 
 <div>
+  <a href="https://saucelabs.com/">
+    <img alt="Sauce Labs" src="images/assets/Sauce-Labs_Horiz_Red-Grey_RGB_200x28.png" />
+  </a>
+</div>
+
+<div>
   <a href="https://www.webcomponents.org/element/x-postpress">
     <img alt="published on webcomponents.org" src="https://img.shields.io/badge/webcomponents.org-published-blue.png" />
   </a>
