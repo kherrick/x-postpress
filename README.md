@@ -34,7 +34,32 @@ x-postpress
   ```html
   <style>
     x-postpress {
-      --ul-list-style-type: none;
+      --a-color: #000;
+      --a-text-decoration: none;
+      --a-hover-text-decoration: underline;
+      --article-clear: inherit;
+      --article-margin-bottom: 1rem;
+      --article-margin-left: auto;
+      --article-margin-right: auto;
+      --article-margin-top: 0;
+      --article-width: 80%;
+      --h2-color: #333;
+      --h2-font-size: smaller;
+      --hr-clear: both;
+      --hr-display: block;
+      --img-display: inherit;
+      --img-float: inherit;
+      --img-height: auto;
+      --img-max-height: inherit;
+      --img-max-width: 100%;
+      --img-padding-bottom: inherit;
+      --img-padding-left: inherit;
+      --img-padding-right: inherit;
+      --img-padding-top: inherit;
+      --img-width: auto;
+      --ul-list-style-type: inherit;
+      --p-clear: inherit;
+      --p-text-align: inherit;
     }
   </style>
 
