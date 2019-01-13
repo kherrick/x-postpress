@@ -4,14 +4,13 @@ x-postpress
 ## About
 
   * A Web Component built using [LitElement](https://lit-element.polymer-project.org/)
-
   * Fetches [WordPress](https://wordpress.org/) posts [from the REST API](https://developer.wordpress.org/rest-api/reference/posts/#list-posts) based on attributes set on the element
-
   * [Built to support Internet Explorer 11](https://github.com/kherrick/x-postpress/tree/master/build/es5-bundled)
 
 ## Try
 
-  * Demo the element loading a WordPress REST API endpoint at [https://kherrick.github.io/x-postpress/](https://kherrick.github.io/x-postpress/)
+  * [Demo the element](https://kherrick.github.io/x-postpress/) on GitHub Pages
+  * [Exercise the element](https://codesandbox.io/s/ykjx5olp51) on CodeSandbox
 
 ## Use
 
@@ -33,33 +32,12 @@ x-postpress
 * Add the tag into the document and style using <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_variables">CSS custom properties</a>. Articles can be included with the provided <a href="https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_templates_and_slots">slot element</a>:
   ```html
   <style>
+    ul {
+      list-style-type: var(--ul-list-style-type, inherit);
+    }
+
     x-postpress {
-      --a-color: #000;
-      --a-text-decoration: none;
-      --a-hover-text-decoration: underline;
-      --article-clear: inherit;
-      --article-margin-bottom: 1rem;
-      --article-margin-left: auto;
-      --article-margin-right: auto;
-      --article-margin-top: 0;
-      --article-width: 80%;
-      --h2-color: #333;
-      --h2-font-size: smaller;
-      --hr-clear: both;
-      --hr-display: block;
-      --img-display: inherit;
-      --img-float: inherit;
-      --img-height: auto;
-      --img-max-height: inherit;
-      --img-max-width: 100%;
-      --img-padding-bottom: inherit;
-      --img-padding-left: inherit;
-      --img-padding-right: inherit;
-      --img-padding-top: inherit;
-      --img-width: auto;
-      --ul-list-style-type: inherit;
-      --p-clear: inherit;
-      --p-text-align: inherit;
+      --ul-list-style-type: none;
     }
   </style>
 
@@ -82,10 +60,9 @@ x-postpress
 
 ## Misc
 
-* Other examples are available on [a dedicated branch](https://github.com/kherrick/x-postpress/tree/unpkg/src)
-
+* Other examples are available in [a dedicated folder](https://github.com/kherrick/x-postpress/tree/master/examples)
+* Element styles can be overridden using [included css custom properties](https://github.com/kherrick/x-postpress/blob/master/src/templates/styles/x-postpress.js).
 * Try using the browser's devtools to change the `apiUrl` attribute within the `x-postpress` tag to render another <a href="https://developer.wordpress.org/rest-api/reference/posts/#list-posts">REST API posts endpoint</a>
-
 * If using the included [index.html](index.html), a link can be created to the page, and the custom element attributes can be overridden by including them in the query string (example):
   ```html
   <a href="http://localhost:8081/?apiUrl=https://content.example.com/wp-json/wp/v2/posts&siteUrl=https://example.com">example.com</a>

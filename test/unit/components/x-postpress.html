@@ -49,7 +49,7 @@
           assert.equal(xPostpress.tagName, 'X-POSTPRESS')
         })
 
-        it('has header tag with "Example!" text after one second, when apiUrl attribute is specified and resolves', () => new Promise((res, rej) => {
+        it('has header tag with "Example!" text after five seconds, when apiUrl attribute is specified and resolves', () => new Promise((res, rej) => {
           setInterval(() => {
             const firstArticle = xPostpress.shadowRoot.querySelector('article')
             const firstChild = firstArticle.children[0]
@@ -58,12 +58,12 @@
             assert.equal(firstChild.innerText, 'Example!')
 
             res()
-          }, 1000)
+          }, 5000)
         }))
       })
 
       describe('x-postpress error tests', () => {
-        it('has header tag with "Error" text after one second, with an unspecified apiUrl attribute', () => new Promise((res, rej) => {
+        it('has header tag with "Error" text after five seconds, with an unspecified apiUrl attribute', () => new Promise((res, rej) => {
           let xPostpress = fixture('error')
 
           xPostpress.updateComplete.then(() => {
@@ -75,7 +75,7 @@
               assert.equal(firstChild.innerText, 'Error')
 
               res()
-            }, 1000)
+            }, 5000)
           })
         }))
       })
