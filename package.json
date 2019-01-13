@@ -1,6 +1,6 @@
 {
   "name": "x-postpress",
-  "version": "1.4.4",
+  "version": "1.4.5",
   "license": "BSD-3-Clause",
   "homepage": "https://github.com/kherrick/x-postpress#readme",
   "repository": {
@@ -22,9 +22,10 @@
     "polymer-lint-fix": "npx -q polymer lint --fix --sources \"./src/**/*\"",
     "polymer-lint": "npx -q polymer lint --sources \"./src/**/*\"",
     "prepublish": "npm run build:library",
-    "serve:prpl-server": "npx -q prpl-server --root server/build",
     "serve:app:github": "npx serve build # make sure to run `npm run build:gh-pages` first",
     "serve:app": "npx -q polymer serve --hostname 0.0.0.0 --port 5000 build/es5-bundled",
+    "serve:examples": "npx serve examples",
+    "serve:prpl-server": "npx -q prpl-server --root server/build",
     "start": "npx -q polymer serve --hostname 0.0.0.0 --compile always",
     "test:integration": "npx -q mocha ./test/integration --timeout=30000",
     "test:regenerate-screenshots": "./bin/ci-regenerate-screenshots",
