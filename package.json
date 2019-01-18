@@ -1,6 +1,6 @@
 {
   "name": "x-postpress",
-  "version": "1.4.5",
+  "version": "1.4.6",
   "license": "BSD-3-Clause",
   "homepage": "https://github.com/kherrick/x-postpress#readme",
   "repository": {
@@ -21,7 +21,7 @@
     "lint": "npm run eslint && npm run polymer-lint",
     "polymer-lint-fix": "npx -q polymer lint --fix --sources \"./src/**/*\"",
     "polymer-lint": "npx -q polymer lint --sources \"./src/**/*\"",
-    "prepublish": "npm run build:library",
+    "prepublishOnly": "npm run build:library",
     "serve:app:github": "npx serve build # make sure to run `npm run build:gh-pages` first",
     "serve:app": "npx -q polymer serve --hostname 0.0.0.0 --port 5000 build/es5-bundled",
     "serve:examples": "npx serve examples",
@@ -36,7 +36,7 @@
   "dependencies": {
     "@polymer/app-layout": "^3.0.2",
     "@polymer/polymer": "^3.1.0",
-    "@webcomponents/webcomponentsjs": "^2.2.3",
+    "@webcomponents/webcomponentsjs": "^2.2.4",
     "fetch-polyfill": "^0.8.2",
     "lit-element": "^2.0.0-rc.2",
     "lit-html": "^1.0.0-rc.2",
@@ -49,7 +49,7 @@
     "chai": "^4.2.0",
     "del": "^3.0.0",
     "eslint": "^5.12.0",
-    "eslint-config-prettier": "^3.3.0",
+    "eslint-config-prettier": "^3.5.0",
     "eslint-plugin-prettier": "^3.0.1",
     "fetch-mock": "^7.3.0",
     "gh-pages": "^2.0.1",
