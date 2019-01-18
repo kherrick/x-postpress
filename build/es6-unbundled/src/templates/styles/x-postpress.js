@@ -20,6 +20,10 @@ define(["exports","/node_modules/lit-element/lit-element.js"],function(_exports,
       width: var(--article-width, 80%);
     }
 
+    h1 {
+      font-size: var(--h1-font-size, inherit);
+    }
+
     h2 {
       color: var(--h2-color, #333);
       font-size: var(--h2-font-size, smaller);
