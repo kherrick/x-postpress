@@ -29,7 +29,7 @@ x-postpress
       import 'x-postpress'
       ```
 
-* Add the tag into the document and style using <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_variables">CSS custom properties</a>. Articles can be included with the provided <a href="https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_templates_and_slots">slot element</a>:
+* Add the tag into the document and style using <a href="https://github.com/kherrick/x-postpress/blob/master/src/templates/styles/x-postpress.js">available CSS custom properties</a>. Articles can be included with the provided <a href="https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_templates_and_slots">slot element</a>:
   ```html
   <style>
     ul {
@@ -61,7 +61,6 @@ x-postpress
 ## Misc
 
 * Other examples are available in [a dedicated folder](https://github.com/kherrick/x-postpress/tree/master/examples)
-* Element styles can be overridden using [included css custom properties](https://github.com/kherrick/x-postpress/blob/master/src/templates/styles/x-postpress.js).
 * Try using the browser's devtools to change the `apiUrl` attribute within the `x-postpress` tag to render another <a href="https://developer.wordpress.org/rest-api/reference/posts/#list-posts">REST API posts endpoint</a>
 * If using the included [index.html](index.html), a link can be created to the page, and the custom element attributes can be overridden by including them in the query string (example):
   ```html
@@ -69,25 +68,25 @@ x-postpress
   ```
 
 <div>
-  <a href="https://github.com/kherrick/x-postpress">
+  <a href="https://kherrick.github.io/x-postpress/">
     <img alt="postpress logo" src="images/manifest/icon-48x48.png" width="32px" />
   </a>
 </div>
 
 <div>
+  <a href="https://travis-ci.org/kherrick/x-postpress/">
+    <img alt="Travis CI build status" src="https://api.travis-ci.org/kherrick/x-postpress.png?branch=master" />
+  </a>
+</div>
+
+<div>
   <a href="https://saucelabs.com/">
-    <img alt="Sauce Labs" src="images/assets/Sauce-Labs_Horiz_Red-Grey_RGB_200x28.png" />
+    <img alt="Sauce Labs build status" src="https://saucelabs.com/buildstatus/kherrick" />
   </a>
 </div>
 
 <div>
   <a href="https://www.webcomponents.org/element/x-postpress">
     <img alt="published on webcomponents.org" src="https://img.shields.io/badge/webcomponents.org-published-blue.png" />
-  </a>
-</div>
-
-<div>
-  <a href="https://travis-ci.org/kherrick/x-postpress/">
-    <img alt="build status" src="https://api.travis-ci.org/kherrick/x-postpress.png?branch=master" />
   </a>
 </div>
