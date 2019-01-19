@@ -153,7 +153,7 @@
     </style>
   </head>
   <body>
-    <x-postpress-app siteTitle="x-postpress-app">
+    <x-postpress-app siteUrl="https://example.com/" siteTitle="x-postpress-app">
       <div id="app-drawer-children" slot="app-drawer-children">
         <ul>
           <li>
@@ -199,14 +199,30 @@
         };
 
         // set properties based on the query string parameters
-        var siteUrlParam = queryParams(window.location.search)['siteUrl']
-        xPostpress.siteUrl = typeof siteUrlParam === 'undefined' ? 'https://kherrick.github.io/x-postpress/' : siteUrlParam
+        var apiUrl = queryParams(window.location.search)['apiUrl'], apiHostParam, apiPathParam
 
-        var apiUrlParam = queryParams(window.location.search)['apiUrl']
-        xPostpress.apiUrl =
-          typeof apiUrlParam === 'undefined'
-            ? 'https://content.example.com/wp-json/wp/v2/posts?include=1'
-            : apiUrlParam
+        // allow 'apiUrl' to be passed
+        if (apiUrl) {
+          var anchor = document.createElement('a');
+          anchor.href = apiUrl;
+
+          apiHostParam = anchor.protocol + '//' + anchor.hostname;
+          apiPathParam = anchor.pathname.replace(/^\/|/, '/').split('/posts')[0];
+        } else {
+          apiHostParam = queryParams(window.location.search)['apiHost'];
+          apiPathParam = queryParams(window.location.search)['apiPath'];
+        }
+
+        // default the properties if a query string was not set
+        xPostpress.apiHost =
+          typeof apiHostParam === 'undefined'
+            ? 'https://content.example.com'
+            : apiHostParam;
+
+        xPostpress.apiPath =
+          typeof apiPathParam === 'undefined'
+            ? '/wp-json/wp/v2'
+            : apiPathParam;
       </script>
     </x-postpress-app>
     <script src="node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>

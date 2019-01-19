@@ -94,11 +94,7 @@ module.exports = {
       console.log(prefix + '...')
 
       page = await browser.newPage()
-      await interceptNetworkRequests(
-        page,
-        JSON.stringify(posts),
-        'https://content.example.com/wp-json/wp/v2/posts?include=1'
-      )
+      await interceptNetworkRequests(page, JSON.stringify(posts), 'https://content.example.com/wp-json/wp/v2/posts')
       await setViewportAndTakeScreenshot(breakpoints[i], `${baselineDir}/${prefix}/index.png`, page)
     }
 
