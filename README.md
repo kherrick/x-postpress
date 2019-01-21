@@ -10,7 +10,7 @@ x-postpress
 ## Try
 
   * [Demo the element](https://kherrick.github.io/x-postpress/) on GitHub Pages
-  * [Exercise the element](https://codesandbox.io/s/ykjx5olp51) on CodeSandbox
+  * [Exercise the element](https://codesandbox.io/s/4o5zyo1v0) on CodeSandbox
 
 ## Use
 
