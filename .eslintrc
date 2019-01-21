@@ -29,7 +29,7 @@
         "arrowParens": "avoid",
         "bracketSpacing": true,
         "jsxBracketSameLine": false,
-        "parser": "babylon",
+        "parser": "babel",
         "printWidth": 120,
         "semi": false,
         "singleQuote": true,

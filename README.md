@@ -42,8 +42,8 @@ x-postpress
   </style>
 
   <x-postpress
-    apiUrl="https://content.example.com/wp-json/wp/v2/posts?per_page=1"
-    siteUrl="https://example.com/"
+    apiHost="https://content.example.com"
+    per_page="1"
   >
     <div slot="articles">
       <article>
@@ -64,7 +64,7 @@ x-postpress
 * Try using the browser's devtools to change the `apiUrl` attribute within the `x-postpress` tag to render another <a href="https://developer.wordpress.org/rest-api/reference/posts/#list-posts">REST API posts endpoint</a>
 * If using the included [index.html](index.html), a link can be created to the page, and the custom element attributes can be overridden by including them in the query string (example):
   ```html
-  <a href="http://localhost:8081/?apiUrl=https://content.example.com/wp-json/wp/v2/posts&siteUrl=https://example.com">example.com</a>
+  <a href="http://localhost:8081/?apiHost=https://content.example.com">example.com</a>
   ```
 
 <div>

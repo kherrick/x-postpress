@@ -12,6 +12,9 @@ const xPostpressApp = class extends LitElement {
     return {
       siteTitle: {
         type: String
+      },
+      siteUrl: {
+        type: String
       }
     }
   }

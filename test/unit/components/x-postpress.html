@@ -14,7 +14,7 @@
   <body>
     <test-fixture id="basic">
       <template>
-        <x-postpress apiUrl="https://content.example.com/wp-json/wp/v2/posts?include=1"></x-postpress>
+        <x-postpress apiHost="https://content.example.com" include="1"></x-postpress>
       </template>
     </test-fixture>
 
@@ -30,41 +30,37 @@
       import posts from '../../fixtures/posts/esm.js'
 
       describe('x-postpress basic tests', () => {
-        let xPostpress
-
-        before(() => {
-          fetchMock.get('https://content.example.com/wp-json/wp/v2/posts?include=1', posts);
-
-          xPostpress = fixture('basic')
-
-          // Make tests wait until element is rendered
-          return xPostpress.updateComplete
-        })
-
-        after(() => {
-          fetchMock.restore()
-        })
+        before(() => fetchMock.get('https://content.example.com/wp-json/wp/v2/posts?include=1', posts))
+        after(() => fetchMock.restore())
 
         it('has the tagName property set correctly', () => {
-          assert.equal(xPostpress.tagName, 'X-POSTPRESS')
+          const xPostpress = fixture('basic')
+
+          xPostpress.updateComplete.then(() => {
+            assert.equal(xPostpress.tagName, 'X-POSTPRESS')
+          })
         })
 
-        it('has header tag with "Example!" text after five seconds, when apiUrl attribute is specified and resolves', () => new Promise((res, rej) => {
-          setInterval(() => {
-            const firstArticle = xPostpress.shadowRoot.querySelector('article')
-            const firstChild = firstArticle.children[0]
+        it('has header tag with "Example!" text after five seconds, when include attribute is specified and resolves', () => new Promise((res, rej) => {
+          const xPostpress = fixture('basic')
 
-            assert.equal(firstChild.tagName, 'H1')
-            assert.equal(firstChild.innerText, 'Example!')
+          xPostpress.updateComplete.then(() => {
+            setInterval(() => {
+              const firstArticle = xPostpress.shadowRoot.querySelector('article')
+              const firstChild = firstArticle.children[0]
 
-            res()
-          }, 5000)
+              assert.equal(firstChild.tagName, 'H1')
+              assert.equal(firstChild.innerText, 'Example!')
+
+              res()
+            }, 5000)
+          })
         }))
       })
 
       describe('x-postpress error tests', () => {
-        it('has header tag with "Error" text after five seconds, with an unspecified apiUrl attribute', () => new Promise((res, rej) => {
-          let xPostpress = fixture('error')
+        it('has header tag with "Error" text after five seconds, without specified attributes', () => new Promise((res, rej) => {
+          const xPostpress = fixture('error')
 
           xPostpress.updateComplete.then(() => {
             setInterval(() => {
