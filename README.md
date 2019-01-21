@@ -1,16 +1,16 @@
-x-postpress
-======
+# x-postpress
+
+A Web Component that fetches [WordPress](https://wordpress.org/) posts [from the REST API](https://developer.wordpress.org/rest-api/reference/posts/#list-posts) based on attributes set on the element.
 
 ## About
 
-  * A Web Component built using [LitElement](https://lit-element.polymer-project.org/)
-  * Fetches [WordPress](https://wordpress.org/) posts [from the REST API](https://developer.wordpress.org/rest-api/reference/posts/#list-posts) based on attributes set on the element
-  * [Built to support Internet Explorer 11](https://github.com/kherrick/x-postpress/tree/master/build/es5-bundled)
+  * Built using [LitElement](https://lit-element.polymer-project.org/)
+  * [Supports Internet Explorer 11](https://github.com/kherrick/x-postpress/tree/master/build/es5-bundled)
 
 ## Try
 
   * [Demo the element](https://kherrick.github.io/x-postpress/) on GitHub Pages
-  * [Exercise the element](https://codesandbox.io/s/ykjx5olp51) on CodeSandbox
+  * [Exercise the element](https://codesandbox.io/s/2p078n654j) on CodeSandbox
 
 ## Use
 
