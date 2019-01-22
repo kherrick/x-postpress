@@ -99,17 +99,17 @@
   <!-- load ES2015 build -->
   <script src="https://unpkg.com/polymer-build@3.1.1/lib/babel-helpers-full.min.js"></script>
   <script src="https://unpkg.com/@polymer/esm-amd-loader@1.0.4/lib/esm-amd-loader.min.js"></script>
-  <script src="https://unpkg.com/x-postpress@2.0.0/build/es6-bundled/src/components/x-postpress.js"></script>
+  <script src="https://unpkg.com/x-postpress@2.0.1/build/es6-bundled/src/components/x-postpress.js"></script>
 
   <!-- use custom element -->
-  <x-postpress apiHost="https://example.com">
+  <x-postpress apiHost="https://content.example.com">
     <div slot="articles">
       <article>
         <h1><a href="https://www.npmjs.com/package/x-postpress">About x-postpress</a></h1>
         <p><a href="https://github.com/kherrick/x-postpress">x-postpress</a> is a <a href="https://developer.mozilla.org/en-US/docs/Web/Web_Components">Web Component</a> built using <a href="https://lit-element.polymer-project.org/">LitElement</a>, that
           is hosted on npm. The current example loads the element and required polyfills from unpkg.com.</p>
         <p>When the element is used by the consumer, it fetches <a href="https://wordpress.org/">WordPress</a> posts from <a href="https://developer.wordpress.org/rest-api/reference/posts/#list-posts">the REST API</a> based on attributes set on the element.</p>
-        <p>To try it out, open the brower's devtools, and change the apiUrl attribute on the x-postpress element</p>
+        <p>To try it out, modify the source, or open the browser's devtools and change the apiHost attribute.</p>
         <hr />
       </article>
     </div>
