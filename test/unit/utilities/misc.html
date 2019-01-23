@@ -10,9 +10,9 @@
   </head>
   <body>
     <script type="module">
-      import { formatDate } from '../../../src/utilities/misc.js'
+      import { buildQueryString, formatDate } from '../../../src/utilities/misc.js'
 
-      describe('formatting provided date strings output correctly', () => {
+      describe('tests buildQueryString', () => {
         // before(() => {})
 
         // after(() => {})
@@ -21,247 +21,84 @@
 
         // afterEach(() => {})
 
-        it('formats the date as expected', () => {
-          const dateString = '1970-01-01T00:00:00'
-          const result = formatDate(dateString)
+        const supportedQueryStringAttributes = ['categories', 'include', 'page', 'per_page', 'search', 'slug', 'tags']
 
-          const expectedResult = 'Thursday, 01 January 1970'
-
-          expect(result).equal(expectedResult)
-        })
-
-        it('formats the date as expected', () => {
-          const dateString = '1999-12-31T12:00:00'
-          const result = formatDate(dateString)
-
-          const expectedResult = 'Friday, 31 December 1999'
+        it('builds the query string with one supported attribute', () => {
+          const expectedResult = '?include=22'
+          const result = buildQueryString({
+            apiHost: 'https://content.example.com',
+            apiPath: '/wp-json/wp/v2',
+            include: '22',
+          }, supportedQueryStringAttributes)
 
           expect(result).equal(expectedResult)
         })
 
-        it('formats the date as expected', () => {
-          const dateString = '1999-12-31T13:00:00'
-          const result = formatDate(dateString)
-
-          const expectedResult = 'Friday, 31 December 1999'
-
-          expect(result).equal(expectedResult)
-        })
-
-        it('formats the date as expected', () => {
-          const dateString = '1999-12-31T14:00:00'
-          const result = formatDate(dateString)
-
-          const expectedResult = 'Friday, 31 December 1999'
+        it('builds the query string with more than one supported attribute', () => {
+          const expectedResult = '?page=1&per_page=5&search=item'
+          const result = buildQueryString({
+            apiHost: 'https://content.example.com',
+            apiPath: '/wp-json/wp/v2',
+            page: '1',
+            per_page: '5',
+            search: 'item',
+          }, supportedQueryStringAttributes)
 
           expect(result).equal(expectedResult)
         })
 
-        it('formats the date as expected', () => {
-          const dateString = '1999-12-31T15:00:00'
-          const result = formatDate(dateString)
-
-          const expectedResult = 'Friday, 31 December 1999'
-
-          expect(result).equal(expectedResult)
-        })
-
-        it('formats the date as expected', () => {
-          const dateString = '1999-12-31T16:00:00'
-          const result = formatDate(dateString)
-
-          const expectedResult = 'Friday, 31 December 1999'
+        it('returns empty string when there are no supported attributes', () => {
+          const expectedResult = ''
+          const result = buildQueryString({
+            apiHost: 'https://content.example.com',
+            apiPath: '/wp-json/wp/v2',
+            include: '22',
+          }, [])
 
           expect(result).equal(expectedResult)
         })
 
-        it('formats the date as expected', () => {
-          const dateString = '1999-12-31T17:00:00'
-          const result = formatDate(dateString)
-
-          const expectedResult = 'Friday, 31 December 1999'
+        it('returns empty string when the first argument does not contain supported attributes', () => {
+          const expectedResult = ''
+          const result = buildQueryString({}, supportedQueryStringAttributes)
 
           expect(result).equal(expectedResult)
         })
+      })
 
-        it('formats the date as expected', () => {
-          const dateString = '1999-12-31T18:00:00'
-          const result = formatDate(dateString)
-
-          const expectedResult = 'Friday, 31 December 1999'
-
-          expect(result).equal(expectedResult)
-        })
-
-        it('formats the date as expected', () => {
-          const dateString = '1999-12-31T19:00:00'
-          const result = formatDate(dateString)
-
-          const expectedResult = 'Friday, 31 December 1999'
-
-          expect(result).equal(expectedResult)
-        })
-
-        it('formats the date as expected', () => {
-          const dateString = '1999-12-31T20:00:00'
-          const result = formatDate(dateString)
-
-          const expectedResult = 'Friday, 31 December 1999'
-
-          expect(result).equal(expectedResult)
-        })
-
-        it('formats the date as expected', () => {
-          const dateString = '1999-12-31T21:00:00'
-          const result = formatDate(dateString)
-
-          const expectedResult = 'Friday, 31 December 1999'
-
-          expect(result).equal(expectedResult)
-        })
-
-        it('formats the date as expected', () => {
-          const dateString = '1999-12-31T22:00:00'
-          const result = formatDate(dateString)
-
-          const expectedResult = 'Friday, 31 December 1999'
-
-          expect(result).equal(expectedResult)
-        })
-
-        it('formats the date as expected', () => {
-          const dateString = '1999-12-31T23:00:00'
-          const result = formatDate(dateString)
-
-          const expectedResult = 'Friday, 31 December 1999'
-
-          expect(result).equal(expectedResult)
-        })
-
-        it('formats the date as expected', () => {
-          const dateString = '1999-12-31T23:59:59'
-          const result = formatDate(dateString)
-
-          const expectedResult = 'Friday, 31 December 1999'
-
-          expect(result).equal(expectedResult)
-        })
-
-        it('formats the date as expected', () => {
-          const dateString = '2000-01-01T00:00:00'
-          const result = formatDate(dateString)
-
-          const expectedResult = 'Saturday, 01 January 2000'
-
-          expect(result).equal(expectedResult)
-        })
-
-        it('formats the date as expected', () => {
-          const dateString = '2000-01-01T02:00:00'
-          const result = formatDate(dateString)
-
-          const expectedResult = 'Saturday, 01 January 2000'
-
-          expect(result).equal(expectedResult)
-        })
-
-        it('formats the date as expected', () => {
-          const dateString = '2000-01-01T03:00:00'
-          const result = formatDate(dateString)
-
-          const expectedResult = 'Saturday, 01 January 2000'
-
-          expect(result).equal(expectedResult)
-        })
-
-        it('formats the date as expected', () => {
-          const dateString = '2000-01-01T04:00:00'
-          const result = formatDate(dateString)
-
-          const expectedResult = 'Saturday, 01 January 2000'
-
-          expect(result).equal(expectedResult)
-        })
-
-        it('formats the date as expected', () => {
-          const dateString = '2000-01-01T05:00:00'
-          const result = formatDate(dateString)
-
-          const expectedResult = 'Saturday, 01 January 2000'
-
-          expect(result).equal(expectedResult)
-        })
-
-        it('formats the date as expected', () => {
-          const dateString = '2000-01-01T06:00:00'
-          const result = formatDate(dateString)
-
-          const expectedResult = 'Saturday, 01 January 2000'
-
-          expect(result).equal(expectedResult)
-        })
-
-        it('formats the date as expected', () => {
-          const dateString = '2000-01-01T07:00:00'
-          const result = formatDate(dateString)
-
-          const expectedResult = 'Saturday, 01 January 2000'
-
-          expect(result).equal(expectedResult)
-        })
-
-        it('formats the date as expected', () => {
-          const dateString = '2000-01-01T08:00:00'
-          const result = formatDate(dateString)
-
-          const expectedResult = 'Saturday, 01 January 2000'
-
-          expect(result).equal(expectedResult)
-        })
-
-        it('formats the date as expected', () => {
-          const dateString = '2000-01-01T09:00:00'
-          const result = formatDate(dateString)
-
-          const expectedResult = 'Saturday, 01 January 2000'
-
-          expect(result).equal(expectedResult)
-        })
-
-        it('formats the date as expected', () => {
-          const dateString = '2000-01-01T10:00:00'
-          const result = formatDate(dateString)
-
-          const expectedResult = 'Saturday, 01 January 2000'
-
-          expect(result).equal(expectedResult)
-        })
-
-        it('formats the date as expected', () => {
-          const dateString = '2000-01-01T11:00:00'
-          const result = formatDate(dateString)
-
-          const expectedResult = 'Saturday, 01 January 2000'
-
-          expect(result).equal(expectedResult)
-        })
-
-        it('formats the date as expected', () => {
-          const dateString = '2000-01-01T12:00:00'
-          const result = formatDate(dateString)
-
-          const expectedResult = 'Saturday, 01 January 2000'
-
-          expect(result).equal(expectedResult)
-        })
-
-        it('formats the date as expected', () => {
-          const dateString = '2000-01-01T01:00:00'
-          const result = formatDate(dateString)
-
-          const expectedResult = 'Saturday, 01 January 2000'
-
-          expect(result).equal(expectedResult)
+      describe('tests formatDate', () => {
+        it('returns the formatted date', () => {
+          new Map([
+            ['1970-01-01T00:00:00', 'Thursday, 01 January 1970'],
+            ['1999-12-31T12:00:00', 'Friday, 31 December 1999'],
+            ['1999-12-31T13:00:00', 'Friday, 31 December 1999'],
+            ['1999-12-31T14:00:00', 'Friday, 31 December 1999'],
+            ['1999-12-31T15:00:00', 'Friday, 31 December 1999'],
+            ['1999-12-31T16:00:00', 'Friday, 31 December 1999'],
+            ['1999-12-31T17:00:00', 'Friday, 31 December 1999'],
+            ['1999-12-31T18:00:00', 'Friday, 31 December 1999'],
+            ['1999-12-31T19:00:00', 'Friday, 31 December 1999'],
+            ['1999-12-31T20:00:00', 'Friday, 31 December 1999'],
+            ['1999-12-31T21:00:00', 'Friday, 31 December 1999'],
+            ['1999-12-31T22:00:00', 'Friday, 31 December 1999'],
+            ['1999-12-31T23:00:00', 'Friday, 31 December 1999'],
+            ['1999-12-31T23:59:59', 'Friday, 31 December 1999'],
+            ['2000-01-01T00:00:00', 'Saturday, 01 January 2000'],
+            ['2000-01-01T02:00:00', 'Saturday, 01 January 2000'],
+            ['2000-01-01T03:00:00', 'Saturday, 01 January 2000'],
+            ['2000-01-01T04:00:00', 'Saturday, 01 January 2000'],
+            ['2000-01-01T05:00:00', 'Saturday, 01 January 2000'],
+            ['2000-01-01T06:00:00', 'Saturday, 01 January 2000'],
+            ['2000-01-01T07:00:00', 'Saturday, 01 January 2000'],
+            ['2000-01-01T08:00:00', 'Saturday, 01 January 2000'],
+            ['2000-01-01T09:00:00', 'Saturday, 01 January 2000'],
+            ['2000-01-01T10:00:00', 'Saturday, 01 January 2000'],
+            ['2000-01-01T11:00:00', 'Saturday, 01 January 2000'],
+            ['2000-01-01T12:00:00', 'Saturday, 01 January 2000'],
+            ['2000-01-01T01:00:00', 'Saturday, 01 January 2000']
+          ]).forEach((expectedDate, dateString) => {
+            expect(formatDate(dateString)).equal(expectedDate)
+          })
         })
       })
     </script>
