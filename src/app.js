@@ -23,13 +23,14 @@ const xPostpressApp = class extends LitElement {
     super()
   }
 
-  firstUpdated() {
-    // setup hamburger menu click handler
+  // hamburger menu click handler
+  burgerHandler(e) {
+    e.preventDefault()
+
     const drawer = this.shadowRoot.querySelector('app-drawer')
-    this.shadowRoot.querySelector('x-postpress-hamburger').onclick = () => {
-      drawer.style.display = 'inherit'
-      drawer.toggle()
-    }
+
+    drawer.style.display = 'inherit'
+    drawer.toggle()
   }
 
   render() {
@@ -38,7 +39,7 @@ const xPostpressApp = class extends LitElement {
       <app-header reveals>
         <app-toolbar>
           <div id="toolbar-child">
-            <x-postpress-hamburger></x-postpress-hamburger>
+            <x-postpress-hamburger @click="${this.burgerHandler}"></x-postpress-hamburger>
             <div main-title><a href=${this.siteUrl}>${this.siteTitle}</a></div>
           </div>
         </app-toolbar>
