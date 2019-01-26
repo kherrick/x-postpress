@@ -4,7 +4,7 @@ A Web Component that fetches [WordPress](https://wordpress.org/) posts [from the
 
 ## About
 
-  * Built using [LitElement](https://lit-element.polymer-project.org/)
+  * Built using [LitElement](https://lit-element.polymer-project.org/) and [TypeScript](https://www.typescriptlang.org/)
   * [Supports Internet Explorer 11](https://github.com/kherrick/x-postpress/tree/master/build/es5-bundled)
 
 ## Try
@@ -17,7 +17,11 @@ A Web Component that fetches [WordPress](https://wordpress.org/) posts [from the
 * Add the Web Component to the project (unpkg and npm examples)
   1. load the custom element using a `script` tag (from unpkg):
       ```html
-      <script type="module" src="https://unpkg.com/x-postpress"></script>
+      <script
+        src="https://unpkg.com/x-postpress"
+        type="module"
+      >
+      </script>
       ```
   2. Alternatively, try adding using the command line...
       ```bash
@@ -64,7 +68,11 @@ A Web Component that fetches [WordPress](https://wordpress.org/) posts [from the
 * Try using the browser's devtools to change the `apiUrl` attribute within the `x-postpress` tag to render another <a href="https://developer.wordpress.org/rest-api/reference/posts/#list-posts">REST API posts endpoint</a>
 * If using the included [index.html](index.html), a link can be created to the page, and the custom element attributes can be overridden by including them in the query string (example):
   ```html
-  <a href="http://localhost:8081/?apiHost=https://content.example.com">example.com</a>
+  <a
+    href="http://localhost:8081/?apiHost=https://content.example.com"
+  >
+    example.com
+  </a>
   ```
 
 <div>

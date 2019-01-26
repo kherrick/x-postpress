@@ -1,4 +1,4 @@
-import{html}from"/node_modules/lit-element/lit-element.js";export default html`
+import{html}from"../../../node_modules/lit-element/lit-element.js";export default html`
   <style>
     a,
     a:link,
