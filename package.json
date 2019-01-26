@@ -1,6 +1,6 @@
 {
   "name": "x-postpress",
-  "version": "2.0.2",
+  "version": "2.0.3",
   "license": "BSD-3-Clause",
   "homepage": "https://github.com/kherrick/x-postpress#readme",
   "repository": {
@@ -66,6 +66,7 @@
     "serve": "^10.1.1",
     "wct-mocha": "^1.0.0"
   },
+  "types": "src/types",
   "keywords": [
     "Web Components",
     "Custom Elements",
