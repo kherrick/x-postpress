@@ -1,5 +1,6 @@
 import { LitElement, html } from 'lit-element'
 import styles from '../../templates/styles/x-postpress-hamburger'
+
 export default window.customElements.define(
   'x-postpress-hamburger',
   class extends LitElement {

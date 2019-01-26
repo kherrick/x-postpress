@@ -1,59 +1,45 @@
-import { getPosts, getPostsUrl } from '../utilities/misc.js'
-import { LitElement, html } from '/node_modules/lit-element/lit-element.js'
-import articles, { getErrorMessageArticle, loading } from '../templates/articles/articles.js'
-import styles from '../templates/styles/x-postpress.js'
-
-const xPostpress = class extends LitElement {
-  static get properties() {
-    const reflectedStringProp = { type: String, reflect: true }
-
-    return {
-      apiHost: reflectedStringProp,
-      apiPath: reflectedStringProp,
-
-      categories: reflectedStringProp,
-      include: reflectedStringProp,
-      page: reflectedStringProp,
-      per_page: reflectedStringProp,
-      search: reflectedStringProp,
-      slug: reflectedStringProp,
-      tags: reflectedStringProp,
-
-      didGetPosts: { type: Boolean },
-      articles: { type: Array }
-    }
+var __decorate =
+  (this && this.__decorate) ||
+  function(decorators, target, key, desc) {
+    var c = arguments.length,
+      r = c < 3 ? target : desc === null ? (desc = Object.getOwnPropertyDescriptor(target, key)) : desc,
+      d
+    if (typeof Reflect === 'object' && typeof Reflect.decorate === 'function')
+      r = Reflect.decorate(decorators, target, key, desc)
+    else
+      for (var i = decorators.length - 1; i >= 0; i--)
+        if ((d = decorators[i])) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r
+    return c > 3 && r && Object.defineProperty(target, key, r), r
   }
-
+import { getPosts, getPostsUrl } from '../utilities/misc'
+import { LitElement, property, html, TemplateResult } from 'lit-element'
+import articles, { getErrorMessageArticle, loading } from '../templates/articles/articles'
+import styles from '../templates/styles/x-postpress'
+class xPostpress extends LitElement {
   constructor() {
     super()
-
-    // attributes for building the url
-    this.urlAttributes = ['apiHost', 'apiPath']
-    // attributes used to build a query string, if one is not included explicitly
-    this.builtQueryStringAttributes = ['categories', 'include', 'page', 'per_page', 'search', 'slug', 'tags']
-
-    // set only once, when posts are first retrieved
-    this.didGetPosts = false
-    // defaulted to the "loading article"
-    this.articles = loading
-
     // set defaults
     this.apiHost = 'https://content.example.com'
     this.apiPath = '/wp-json/wp/v2'
-
     // a single number, or comma separated list of numbers
     this.categories = ''
     this.include = ''
     this.page = ''
     this.per_page = ''
     this.tags = ''
-
     // a string
     this.search = ''
     // example-slug
     this.slug = ''
+    // attributes for building the url
+    this.urlAttributes = ['apiHost', 'apiPath']
+    // attributes used to build a query string, if one is not included explicitly
+    this.builtQueryStringAttributes = ['categories', 'include', 'page', 'per_page', 'search', 'slug', 'tags']
+    // set only once, when posts are first retrieved
+    this.didGetPosts = false
+    // defaulted to the "loading article"
+    this.articles = loading
   }
-
   // https://developer.wordpress.org/rest-api/reference/posts/#list-posts
   requestPosts() {
     const postsUrl = getPostsUrl(
@@ -70,44 +56,48 @@ const xPostpress = class extends LitElement {
       },
       this.builtQueryStringAttributes
     )
-
     getPosts(postsUrl)
       .then(res => articles(res))
-      .catch(err => [getErrorMessageArticle(err, postsUrl)])
+      .catch(err => getErrorMessageArticle(err))
       .then(articles => {
         this.didGetPosts = true
         this.articles = articles
       })
   }
-
   firstUpdated() {
     this.requestPosts()
   }
-
   updated(changedProperties) {
     if (this.didGetPosts) {
       const shouldGetPostsAttributes = [...this.urlAttributes, ...this.builtQueryStringAttributes]
       const props = changedProperties.keys()
-
       let prop = props.next()
-
       while (!prop['done']) {
         if (shouldGetPostsAttributes.indexOf(prop['value']) !== -1) {
           this.requestPosts()
-
           break
         }
-
         prop = props.next()
       }
     }
   }
-
   render() {
     return html`
       ${styles}<slot name="articles"></slot>${this.articles}
     `
   }
 }
-
+__decorate([property({ type: String, reflect: true })], xPostpress.prototype, 'apiHost', void 0)
+__decorate([property({ type: String, reflect: true })], xPostpress.prototype, 'apiPath', void 0)
+__decorate([property({ type: String, reflect: true })], xPostpress.prototype, 'categories', void 0)
+__decorate([property({ type: String, reflect: true })], xPostpress.prototype, 'include', void 0)
+__decorate([property({ type: String, reflect: true })], xPostpress.prototype, 'page', void 0)
+__decorate([property({ type: String, reflect: true })], xPostpress.prototype, 'per_page', void 0)
+__decorate([property({ type: String, reflect: true })], xPostpress.prototype, 'tags', void 0)
+__decorate([property({ type: String, reflect: true })], xPostpress.prototype, 'search', void 0)
+__decorate([property({ type: String, reflect: true })], xPostpress.prototype, 'slug', void 0)
+__decorate([property({ type: Boolean })], xPostpress.prototype, 'urlAttributes', void 0)
+__decorate([property({ type: Array })], xPostpress.prototype, 'builtQueryStringAttributes', void 0)
+__decorate([property({ type: Boolean })], xPostpress.prototype, 'didGetPosts', void 0)
+__decorate([property({ type: TemplateResult })], xPostpress.prototype, 'articles', void 0)
 window.customElements.define('x-postpress', xPostpress)

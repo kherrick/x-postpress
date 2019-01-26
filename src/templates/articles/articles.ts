@@ -1,6 +1,7 @@
 import article from './article'
-export const getErrorMessageArticle = err => [
-  article({
+
+export const getErrorMessageArticle = (err: any) =>
+  [article({
     errorMessage: `${err.message}`,
     date_gmt: '',
     link: '',
@@ -10,10 +11,10 @@ export const getErrorMessageArticle = err => [
     content: {
       rendered: '<p>Posts are unavailable. Please check the error and try again.</p>'
     }
-  })
-]
-export const loading = (() => [
-  article({
+  })]
+
+export const loading = (() =>
+  [article({
     errorMessage: '',
     date_gmt: '',
     link: '',
@@ -23,7 +24,6 @@ export const loading = (() => [
     content: {
       rendered: ''
     }
-  })
-])()
-export default (articles = [{ content: '', date_gmt: '', errorMessage: '', link: '', title: '' }]) =>
-  articles.map(res => article(res))
+  })])()
+
+export default (articles = [{ content: '', date_gmt: '', errorMessage: '', link: '', title: '' }]) => articles.map(res => article(res))
