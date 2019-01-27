@@ -15,7 +15,7 @@ A Web Component that fetches [WordPress](https://wordpress.org/) posts [from the
 ## Use
 
 * Add the Web Component to the project (unpkg and npm examples)
-  1. load the custom element using a `script` tag (from unpkg):
+  1. Load the custom element using a `script` tag:
       ```html
       <script
         src="https://unpkg.com/x-postpress"
@@ -65,7 +65,7 @@ A Web Component that fetches [WordPress](https://wordpress.org/) posts [from the
 ## Misc
 
 * Other examples are available in [a dedicated folder](https://github.com/kherrick/x-postpress/tree/master/examples)
-* Try using the browser's devtools to change the `apiUrl` attribute within the `x-postpress` tag to render another <a href="https://developer.wordpress.org/rest-api/reference/posts/#list-posts">REST API posts endpoint</a>
+* Try using the browser's devtools to change the `apiHost` attribute within the `x-postpress` tag to render another <a href="https://developer.wordpress.org/rest-api/reference/posts/#list-posts">REST API posts endpoint</a>
 * If using the included [index.html](index.html), a link can be created to the page, and the custom element attributes can be overridden by including them in the query string (example):
   ```html
   <a
