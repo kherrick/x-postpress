@@ -10,7 +10,7 @@ A Web Component that fetches [WordPress](https://wordpress.org/) posts [from the
 ## Try
 
   * [Demo the element](https://kherrick.github.io/x-postpress/) on GitHub Pages
-  * [Exercise the element](https://codesandbox.io/s/2p078n654j) on CodeSandbox
+  * [Exercise the element](https://codesandbox.io/s/nry9x86mxm) on CodeSandbox
 
 ## Use
 

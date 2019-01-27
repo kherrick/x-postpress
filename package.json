@@ -1,6 +1,6 @@
 {
   "name": "x-postpress",
-  "version": "2.1.0",
+  "version": "2.1.1",
   "license": "BSD-3-Clause",
   "homepage": "https://github.com/kherrick/x-postpress#readme",
   "repository": {
@@ -72,6 +72,7 @@
   "keywords": [
     "Web Components",
     "Custom Elements",
+    "TypeScript",
     "WordPress",
     "REST API",
     "lit-html",
