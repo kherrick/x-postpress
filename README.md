@@ -10,12 +10,12 @@ A Web Component that fetches [WordPress](https://wordpress.org/) posts [from the
 ## Try
 
   * [Demo the element](https://kherrick.github.io/x-postpress/) on GitHub Pages
-  * [Exercise the element](https://codesandbox.io/s/2p078n654j) on CodeSandbox
+  * [Exercise the element](https://codesandbox.io/s/nry9x86mxm) on CodeSandbox
 
 ## Use
 
 * Add the Web Component to the project (unpkg and npm examples)
-  1. load the custom element using a `script` tag (from unpkg):
+  1. Load the custom element using a `script` tag:
       ```html
       <script
         src="https://unpkg.com/x-postpress"
@@ -23,11 +23,11 @@ A Web Component that fetches [WordPress](https://wordpress.org/) posts [from the
       >
       </script>
       ```
-  2. Alternatively, try adding using the command line...
+  2. Alternatively, add using `npm`:
       ```bash
       npm i x-postpress
       ```
-      ...then import the module from another file:
+      Then import the module from another file:
 
       ```javascript
       import 'x-postpress'
@@ -64,9 +64,9 @@ A Web Component that fetches [WordPress](https://wordpress.org/) posts [from the
 
 ## Misc
 
-* Other examples are available in [a dedicated folder](https://github.com/kherrick/x-postpress/tree/master/examples)
-* Try using the browser's devtools to change the `apiUrl` attribute within the `x-postpress` tag to render another <a href="https://developer.wordpress.org/rest-api/reference/posts/#list-posts">REST API posts endpoint</a>
-* If using the included [index.html](index.html), a link can be created to the page, and the custom element attributes can be overridden by including them in the query string (example):
+* An [Angular example](https://github.com/kherrick/angular-x-postpress) is available to try out with additional [unpkg implementations]((https://github.com/kherrick/x-postpress/tree/master/examples)) for various browsers
+* Try using devtools to change the `apiHost` attribute within the `x-postpress` tag to render another <a href="https://developer.wordpress.org/rest-api/reference/posts/#list-posts">REST API posts endpoint</a>
+* If building an app with x-postpress, the included [index.html](index.html) checks the query string for parameters to override particular custom element attributes (example):
   ```html
   <a
     href="http://localhost:8081/?apiHost=https://content.example.com"
