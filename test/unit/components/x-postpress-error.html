@@ -12,30 +12,21 @@
     <script src="../../../node_modules/fetch-mock/dist/es5/client-bundle.js"></script>
   </head>
   <body>
-    <test-fixture id="basic">
+    <test-fixture id="error">
       <template>
-        <x-postpress apiHost="https://content.example.com" include="1"></x-postpress>
+        <x-postpress apiHost="https://nonApi.example.com"></x-postpress>
       </template>
     </test-fixture>
 
     <script type="module">
       import '../../../src/components/x-postpress.js'
       import '@polymer/test-fixture'
-      import posts from '../../fixtures/posts/esm.js'
 
-      describe('x-postpress basic tests', () => {
-        before(() => fetchMock.get('https://content.example.com/wp-json/wp/v2/posts?include=1', posts))
+      describe('x-postpress error tests', () => {
+        before(() => fetchMock.get('https://nonapi.example.com/wp-json/wp/v2/posts', 400))
 
-        it('has the tagName property set correctly', () => {
-          const xPostpress = fixture('basic')
-
-          xPostpress.updateComplete.then(() => {
-            assert.equal(xPostpress.tagName, 'X-POSTPRESS')
-          })
-        })
-
-        it('has header tag with "Example!" text after five seconds, when include attribute is specified and resolves', () => new Promise((res, rej) => {
-          const xPostpress = fixture('basic')
+        it('has header tag with "Error" text after five seconds, with nonApi domain', () => new Promise((res, rej) => {
+          const xPostpress = fixture('error')
 
           xPostpress.updateComplete.then(() => {
             const firstArticle = xPostpress.shadowRoot.querySelector('article')
@@ -43,7 +34,7 @@
 
             setInterval(() => {
               assert.equal(firstChild.tagName, 'H1')
-              assert.equal(firstChild.innerText, 'Example!')
+              assert.equal(firstChild.innerText, 'Error')
 
               res()
             }, 5000)

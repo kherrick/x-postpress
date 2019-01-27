@@ -9,18 +9,19 @@ export const buildQueryString = (props, supportedKeys) => {
       return
     }
     if (result && props[key]) {
-      result = result + `&${key}=${props[key]}`
+      result = `${result}&${key}=${props[key]}`
       return
     }
   })
   return result
 }
 export const formatDate = timestring => {
-  const pad = v => (v < 10 ? `0${v}` : v)
+  const pad = v => (v < 10 ? `0${v}` : `${v}`)
   const dateString = timestring.split('T')[0]
   const date = new Date(dateString)
-  const weekday = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'][date.getUTCDay()]
+  const year = date.getUTCFullYear().toString()
   const day = pad(date.getUTCDate())
+  const weekday = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'][date.getUTCDay()]
   const month = [
     'January',
     'February',
@@ -35,10 +36,9 @@ export const formatDate = timestring => {
     'November',
     'December'
   ][date.getUTCMonth()]
-  const year = date.getUTCFullYear()
   return `${weekday}, ${day} ${month} ${year}`
 }
-export const getLink = link => (link ? link.replace('content.', '') : '')
+export const removeSubdomain = (link, subDomain) => (link ? link.replace(`//${subDomain}.`, '//') : '')
 export const getPosts = apiUrl =>
   new Promise((resolve, reject) =>
     fetch(apiUrl)
@@ -46,7 +46,9 @@ export const getPosts = apiUrl =>
         if (res.ok) {
           return res.json()
         }
-        throw new Error(`status: ${res.status}${res.statusText ? ` | statusText: ${res.statusText}` : ''}`)
+        throw new Error(`status: ${res['status']}
+          ${res['statusText'] ? ` | statusText: ${res['statusText']}` : ''}
+        `)
       })
       .then(response => resolve(response))
       .catch(err => reject(err))

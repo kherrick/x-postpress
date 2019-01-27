@@ -1,29 +1,54 @@
-import article from './article'
+import { TemplateResult } from 'lit-element'
+import article, { ArticlePayload } from './article'
 
-export const getErrorMessageArticle = (err: any) =>
-  [article({
-    errorMessage: `${err.message}`,
-    date_gmt: '',
-    link: '',
-    title: {
-      rendered: 'Error'
+export interface ErrMessage {
+  message: string
+}
+
+export const getErrorMessageArticle = (err: ErrMessage): TemplateResult[] =>
+  [
+    <TemplateResult>article(<ArticlePayload>{
+      errorMessage: `${err['message']}`,
+      date_gmt: <string>'',
+      link: <string>'',
+      title: <object>{
+        rendered: <string>'Error'
+      },
+      content: <object>{
+        rendered: <string>'<p>Posts are unavailable. Please check the error and try again.</p>'
+      }
+    })
+  ]
+
+export const loading: TemplateResult[] = [
+  <TemplateResult>article(<ArticlePayload>{
+    errorMessage: <string>'',
+    date_gmt: <string>'',
+    link: <string>'',
+    title: <object>{
+      rendered: <string>'Loading...'
     },
-    content: {
-      rendered: '<p>Posts are unavailable. Please check the error and try again.</p>'
+    content: <object>{
+      rendered: <string>''
     }
-  })]
+  })
+]
 
-export const loading = (() =>
-  [article({
-    errorMessage: '',
-    date_gmt: '',
-    link: '',
-    title: {
-      rendered: 'Loading...'
-    },
-    content: {
-      rendered: ''
+export default (
+  articles: ArticlePayload[] = [
+    <ArticlePayload>{
+      content: <object>{
+        rendered: <string>''
+      },
+      date_gmt: <string>'',
+      errorMessage: <string>'',
+      link: <string>'',
+      title: <object>{
+        rendered: <string>''
+      }
     }
-  })])()
-
-export default (articles = [{ content: '', date_gmt: '', errorMessage: '', link: '', title: '' }]) => articles.map(res => article(res))
+  ]
+): TemplateResult[] =>
+  articles.map(
+    (res: ArticlePayload): TemplateResult => article(<ArticlePayload>res)
+  )
