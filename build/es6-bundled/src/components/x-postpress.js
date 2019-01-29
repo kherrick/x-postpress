@@ -3,11 +3,7 @@ define(["exports"],function(_exports){"use strict";Object.defineProperty(_export
           ${res.statusText?` | statusText: ${res.statusText}`:""}
         `)}).then(response=>resolve(response)).catch(err=>reject(err)));_exports.getPosts=getPosts;const getPostsUrl=(props,supportedKeys)=>`${props.apiHost}${props.apiPath}${"/posts"}${buildQueryString(props,supportedKeys)}`;_exports.getPostsUrl=getPostsUrl;var misc={buildQueryString:buildQueryString,formatDate:formatDate,removeSubdomain:removeSubdomain,getPosts:getPosts,getPostsUrl:getPostsUrl};_exports.$misc=misc;var article=({content,date_gmt,errorMessage,link,title})=>html`
   <article>
-    <h1>
-      ${unsafeHTML(`
-      <a href="${link}">${title.rendered}</a>
-    `)}
-    </h1>
+    <h1>${unsafeHTML(`<a href="${link}">${title.rendered}</a>`)}</h1>
     <h2>${errorMessage?errorMessage:date_gmt?formatDate(date_gmt):""}</h2>
     <p>${unsafeHTML(content.rendered)}</p>
     <hr />

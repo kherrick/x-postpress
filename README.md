@@ -10,7 +10,7 @@ A Web Component that fetches [WordPress](https://wordpress.org/) posts [from the
 ## Try
 
   * [Demo the element](https://kherrick.github.io/x-postpress/) on GitHub Pages
-  * [Exercise the element](https://codesandbox.io/s/nry9x86mxm) on CodeSandbox
+  * [Exercise the element](https://codesandbox.io/s/mm2n75724x) on CodeSandbox
 
 ## Use
 
@@ -82,14 +82,14 @@ A Web Component that fetches [WordPress](https://wordpress.org/) posts [from the
 </div>
 
 <div>
-  <a href="https://travis-ci.org/kherrick/x-postpress/">
-    <img alt="Travis CI build status" src="https://api.travis-ci.org/kherrick/x-postpress.png?branch=master" />
+  <a href="https://saucelabs.com/">
+    <img alt="Sauce Labs build status" src="images/assets/Sauce-Labs_Horiz_Red-Grey_RGB_200x28.png" />
   </a>
 </div>
 
 <div>
-  <a href="https://saucelabs.com/">
-    <img alt="Sauce Labs build status" src="https://saucelabs.com/buildstatus/kherrick" />
+  <a href="https://travis-ci.org/kherrick/x-postpress/">
+    <img alt="Travis CI build status" src="https://api.travis-ci.org/kherrick/x-postpress.png?branch=master" />
   </a>
 </div>
 

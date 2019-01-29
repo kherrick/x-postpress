@@ -3,11 +3,7 @@ const supportsAdoptingStyleSheets="adoptedStyleSheets"in Document.prototype,cons
           ${res.statusText?` | statusText: ${res.statusText}`:""}
         `)}).then(response=>resolve(response)).catch(err=>reject(err))),getPostsUrl=(props,supportedKeys)=>`${props.apiHost}${props.apiPath}${"/posts"}${buildQueryString(props,supportedKeys)}`;var misc={buildQueryString:buildQueryString,formatDate:formatDate,removeSubdomain:removeSubdomain,getPosts:getPosts,getPostsUrl:getPostsUrl},article=({content,date_gmt,errorMessage,link,title})=>html`
   <article>
-    <h1>
-      ${unsafeHTML(`
-      <a href="${link}">${title.rendered}</a>
-    `)}
-    </h1>
+    <h1>${unsafeHTML(`<a href="${link}">${title.rendered}</a>`)}</h1>
     <h2>${errorMessage?errorMessage:date_gmt?formatDate(date_gmt):""}</h2>
     <p>${unsafeHTML(content.rendered)}</p>
     <hr />
