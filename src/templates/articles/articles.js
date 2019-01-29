@@ -1,7 +1,7 @@
 import article from './article'
 export const getErrorMessageArticle = err => [
   article({
-    errorMessage: `${err.message}`,
+    errorMessage: `${err['message']}`,
     date_gmt: '',
     link: '',
     title: {
@@ -12,7 +12,7 @@ export const getErrorMessageArticle = err => [
     }
   })
 ]
-export const loading = (() => [
+export const loading = [
   article({
     errorMessage: '',
     date_gmt: '',
@@ -24,6 +24,19 @@ export const loading = (() => [
       rendered: ''
     }
   })
-])()
-export default (articles = [{ content: '', date_gmt: '', errorMessage: '', link: '', title: '' }]) =>
-  articles.map(res => article(res))
+]
+export default (
+  articles = [
+    {
+      content: {
+        rendered: ''
+      },
+      date_gmt: '',
+      errorMessage: '',
+      link: '',
+      title: {
+        rendered: ''
+      }
+    }
+  ]
+) => articles.map(res => article(res))

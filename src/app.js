@@ -13,12 +13,12 @@ var __decorate =
   }
 import './components/app-drawer/x-postpress-hamburger'
 import './components/x-postpress'
+import '@polymer/app-layout/app-drawer/app-drawer'
 import '@polymer/app-layout/app-header/app-header'
 import '@polymer/app-layout/app-toolbar/app-toolbar'
-import '@polymer/app-layout/app-drawer/app-drawer'
-import { LitElement, property, html } from 'lit-element'
+import { customElement, html, LitElement, property } from 'lit-element'
 import styles from './templates/styles/app'
-class xPostpressApp extends LitElement {
+let default_1 = class default_1 extends LitElement {
   constructor() {
     super()
     this.drawer = null
@@ -34,7 +34,7 @@ class xPostpressApp extends LitElement {
     }
   }
   firstUpdated() {
-    this.drawer = this.shadowRoot.querySelector('app-drawer')
+    this.drawer = this.shadowRoot ? this.shadowRoot.querySelector('app-drawer') : null
   }
   render() {
     return html`
@@ -52,6 +52,7 @@ class xPostpressApp extends LitElement {
     `
   }
 }
-__decorate([property({ type: String })], xPostpressApp.prototype, 'siteTitle', void 0)
-__decorate([property({ type: String })], xPostpressApp.prototype, 'siteUrl', void 0)
-window.customElements.define('x-postpress-app', xPostpressApp)
+__decorate([property({ type: String })], default_1.prototype, 'siteTitle', void 0)
+__decorate([property({ type: String })], default_1.prototype, 'siteUrl', void 0)
+default_1 = __decorate([customElement('x-postpress-app')], default_1)
+export default default_1

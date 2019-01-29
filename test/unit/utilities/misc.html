@@ -10,7 +10,7 @@
   </head>
   <body>
     <script type="module">
-      import { buildQueryString, formatDate } from '../../../src/utilities/misc.js'
+      import { buildQueryString, formatDate, removeSubdomain } from '../../../src/utilities/misc.js'
 
       describe('tests buildQueryString', () => {
         // before(() => {})
@@ -99,6 +99,32 @@
           ]).forEach((expectedDate, dateString) => {
             expect(formatDate(dateString)).equal(expectedDate)
           })
+        })
+      })
+
+      describe('tests remove subdomain', () => {
+        it('removes the subdomain from the provided https link', () => {
+          const fixture = 'https://content.example.com'
+          const expectation = 'https://example.com'
+          const subdomain = 'content'
+
+          expect(removeSubdomain(fixture, subdomain)).equal(expectation)
+        })
+
+        it('removes the subdomain from the provided http link', () => {
+          const fixture = 'http://another.domain.example.com'
+          const expectation = 'http://domain.example.com'
+          const subdomain = 'another'
+
+          expect(removeSubdomain(fixture, subdomain)).equal(expectation)
+        })
+
+        it('does not remove the subdomain when the provided argument does not match', () => {
+          const fixture = 'https://another.example.com'
+          const expectation = 'https://another.example.com'
+          const subdomain = 'example'
+
+          expect(removeSubdomain(fixture, subdomain)).equal(expectation)
         })
       })
     </script>

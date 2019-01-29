@@ -1,19 +1,33 @@
-export const buildQueryString = (props: any, supportedKeys: any) => {
-  let result = ''
+export interface PostProps {
+  [key: string]: string
 
-  Object.keys(props).forEach(key => {
-    if (supportedKeys.indexOf(key) === -1) {
+  apiHost: string
+  apiPath: string
+  categories: string
+  include: string
+  page: string
+  per_page: string
+  search: string
+  slug: string
+  tags: string
+}
+
+export const buildQueryString = (props: PostProps, supportedKeys: string[]) => {
+  let result: string = <string>''
+
+  Object.keys(<PostProps>props).forEach((key: string) => {
+    if (supportedKeys.indexOf(<string>key) === -1) {
       return
     }
 
-    if (!result && props[key]) {
-      result = `?${key}=${props[key]}`
+    if (!<string>result && <string>props[key]) {
+      result = <string>`?${key}=${props[key]}`
 
       return
     }
 
-    if (result && props[key]) {
-      result = result + `&${key}=${props[key]}`
+    if (<string>result && <string>props[key]) {
+      result = <string>`${result}&${key}=${props[key]}`
 
       return
     }
@@ -22,14 +36,26 @@ export const buildQueryString = (props: any, supportedKeys: any) => {
   return result
 }
 
-export const formatDate = (timestring: any) => {
-  const pad = (v: any) => (v < 10 ? `0${v}` : v)
-  const dateString = timestring.split('T')[0]
-  const date = new Date(dateString)
+export const formatDate = (timestring: string): string => {
+  const pad = (v: number): string => (<number>v < <number>10 ? <string>`0${v}` : <string>`${v}`)
+  const dateString: string = timestring.split(<string>'T')[0]
 
-  const weekday = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'][date.getUTCDay()]
-  const day = pad(date.getUTCDate())
-  const month = [
+  const date: Date = <Date>new Date(<string>dateString)
+  const year: string = <string>date.getUTCFullYear().toString()
+  const day: string = <string>pad(<number>date.getUTCDate())
+  const weekday: string = [
+      'Sunday',
+      'Monday',
+      'Tuesday',
+      'Wednesday',
+      'Thursday',
+      'Friday',
+      'Saturday'
+    ][
+      <number>date.getUTCDay()
+    ]
+
+  const month: string = [
     'January',
     'February',
     'March',
@@ -42,27 +68,44 @@ export const formatDate = (timestring: any) => {
     'October',
     'November',
     'December'
-  ][date.getUTCMonth()]
-  const year = date.getUTCFullYear()
+  ][
+    <number>date.getUTCMonth()
+  ]
 
-  return `${weekday}, ${day} ${month} ${year}`
+  return `${<string>weekday}, ${<string>day} ${<string>month} ${<string>year}`
 }
 
-export const getLink = (link: any) => (link ? link.replace('content.', '') : '')
+export const removeSubdomain = (link: string, subDomain: string) => (
+  <string>link
+    ? <string>link.replace(<string>`//${<string>subDomain}.`, '//')
+    : <string>''
+)
 
-export const getPosts = (apiUrl: any) =>
-  new Promise((resolve, reject) =>
-    fetch(apiUrl)
-      .then(res => {
-        if (res.ok) {
-          return res.json()
+export const getPosts = (apiUrl: string) =>
+  new Promise((resolve: Function, reject: Function): Promise<Function> =>
+    fetch(<string>apiUrl)
+      .then((res: Response) => {
+        if (<boolean>res.ok) {
+          return <Promise<Response>>res.json()
         }
 
-        throw new Error(`status: ${res.status}${res.statusText ? ` | statusText: ${res.statusText}` : ''}`)
+        throw new Error(`status: ${res['status']}
+          ${res['statusText']
+            ? <string>` | statusText: ${res['statusText']}`
+            : <string>''
+          }
+        `)
       })
-      .then(response => resolve(response))
-      .catch(err => reject(err))
+      .then((response: Response) => resolve(<Response>response))
+      .catch((err: Response) => reject(<Response>err))
   )
 
-export const getPostsUrl = (props: any, supportedKeys: any) =>
-  `${props['apiHost']}${props['apiPath']}${'/posts'}${buildQueryString(props, supportedKeys)}`
+export const getPostsUrl = (
+  props: PostProps,
+  supportedKeys: string[]
+) => `${<string>props[<string>'apiHost']}${<string>props[<string>'apiPath']}${<string>'/posts'}${
+  <string>buildQueryString(
+    <PostProps>props,
+    <string[]>supportedKeys
+  )
+}`

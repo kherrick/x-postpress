@@ -11,11 +11,11 @@ var __decorate =
         if ((d = decorators[i])) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r
     return c > 3 && r && Object.defineProperty(target, key, r), r
   }
+import { customElement, html, LitElement, property } from 'lit-element'
 import { getPosts, getPostsUrl } from '../utilities/misc'
-import { LitElement, property, html, TemplateResult } from 'lit-element'
 import articles, { getErrorMessageArticle, loading } from '../templates/articles/articles'
 import styles from '../templates/styles/x-postpress'
-class xPostpress extends LitElement {
+let default_1 = class default_1 extends LitElement {
   constructor() {
     super()
     // set defaults
@@ -83,21 +83,24 @@ class xPostpress extends LitElement {
   }
   render() {
     return html`
-      ${styles}<slot name="articles"></slot>${this.articles}
+      ${styles}
+      <slot name="articles"></slot>
+      ${this.articles}
     `
   }
 }
-__decorate([property({ type: String, reflect: true })], xPostpress.prototype, 'apiHost', void 0)
-__decorate([property({ type: String, reflect: true })], xPostpress.prototype, 'apiPath', void 0)
-__decorate([property({ type: String, reflect: true })], xPostpress.prototype, 'categories', void 0)
-__decorate([property({ type: String, reflect: true })], xPostpress.prototype, 'include', void 0)
-__decorate([property({ type: String, reflect: true })], xPostpress.prototype, 'page', void 0)
-__decorate([property({ type: String, reflect: true })], xPostpress.prototype, 'per_page', void 0)
-__decorate([property({ type: String, reflect: true })], xPostpress.prototype, 'tags', void 0)
-__decorate([property({ type: String, reflect: true })], xPostpress.prototype, 'search', void 0)
-__decorate([property({ type: String, reflect: true })], xPostpress.prototype, 'slug', void 0)
-__decorate([property({ type: Boolean })], xPostpress.prototype, 'urlAttributes', void 0)
-__decorate([property({ type: Array })], xPostpress.prototype, 'builtQueryStringAttributes', void 0)
-__decorate([property({ type: Boolean })], xPostpress.prototype, 'didGetPosts', void 0)
-__decorate([property({ type: TemplateResult })], xPostpress.prototype, 'articles', void 0)
-window.customElements.define('x-postpress', xPostpress)
+__decorate([property({ type: String, reflect: true })], default_1.prototype, 'apiHost', void 0)
+__decorate([property({ type: String, reflect: true })], default_1.prototype, 'apiPath', void 0)
+__decorate([property({ type: String, reflect: true })], default_1.prototype, 'categories', void 0)
+__decorate([property({ type: String, reflect: true })], default_1.prototype, 'include', void 0)
+__decorate([property({ type: String, reflect: true })], default_1.prototype, 'page', void 0)
+__decorate([property({ type: String, reflect: true })], default_1.prototype, 'per_page', void 0)
+__decorate([property({ type: String, reflect: true })], default_1.prototype, 'tags', void 0)
+__decorate([property({ type: String, reflect: true })], default_1.prototype, 'search', void 0)
+__decorate([property({ type: String, reflect: true })], default_1.prototype, 'slug', void 0)
+__decorate([property({ type: Array })], default_1.prototype, 'urlAttributes', void 0)
+__decorate([property({ type: Array })], default_1.prototype, 'builtQueryStringAttributes', void 0)
+__decorate([property({ type: Boolean })], default_1.prototype, 'didGetPosts', void 0)
+__decorate([property({ type: Object, noAccessor: true })], default_1.prototype, 'articles', void 0)
+default_1 = __decorate([customElement('x-postpress')], default_1)
+export default default_1
