@@ -10,7 +10,7 @@ A Web Component that fetches [WordPress](https://wordpress.org/) posts [from the
 ## Try
 
   * [Demo the element](https://kherrick.github.io/x-postpress/) on GitHub Pages
-  * [Exercise the element](https://codesandbox.io/s/mm2n75724x) on CodeSandbox
+  * [Exercise the element](https://codesandbox.io/s/1o2n82xy64) on CodeSandbox
 
 ## Use
 
@@ -64,7 +64,7 @@ A Web Component that fetches [WordPress](https://wordpress.org/) posts [from the
 
 ## Misc
 
-* An [Angular example](https://github.com/kherrick/angular-x-postpress) is available to try out with additional [unpkg implementations]((https://github.com/kherrick/x-postpress/tree/master/examples)) for various browsers
+* An [Angular repository](https://github.com/kherrick/angular-x-postpress) and [unpkg examples](https://github.com/kherrick/x-postpress/tree/master/examples) are available for experimentation
 * Try using devtools to change the `apiHost` attribute within the `x-postpress` tag to render another <a href="https://developer.wordpress.org/rest-api/reference/posts/#list-posts">REST API posts endpoint</a>
 * If building an app with x-postpress, the included [index.html](index.html) checks the query string for parameters to override particular custom element attributes (example):
   ```html
