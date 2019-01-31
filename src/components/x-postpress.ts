@@ -55,7 +55,7 @@ export default class extends LitElement {
   didGetPosts: boolean = <boolean>false
 
   // defaulted to the "loading article"
-  @property({ type: Object, noAccessor: <boolean>true })
+  @property({ type: Object, noAccessor: <boolean>false })
   articles: TemplateResult[] = <TemplateResult[]>loading
 
   constructor() {

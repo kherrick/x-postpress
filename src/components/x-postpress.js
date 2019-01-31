@@ -101,6 +101,6 @@ __decorate([property({ type: String, reflect: true })], default_1.prototype, 'sl
 __decorate([property({ type: Array })], default_1.prototype, 'urlAttributes', void 0)
 __decorate([property({ type: Array })], default_1.prototype, 'builtQueryStringAttributes', void 0)
 __decorate([property({ type: Boolean })], default_1.prototype, 'didGetPosts', void 0)
-__decorate([property({ type: Object, noAccessor: true })], default_1.prototype, 'articles', void 0)
+__decorate([property({ type: Object, noAccessor: false })], default_1.prototype, 'articles', void 0)
 default_1 = __decorate([customElement('x-postpress')], default_1)
 export default default_1
