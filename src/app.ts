@@ -7,44 +7,44 @@ import { AppDrawerElement } from '@polymer/app-layout/app-drawer/app-drawer'
 import { customElement, html, LitElement, property, TemplateResult } from 'lit-element'
 import styles from './templates/styles/app'
 
-@customElement(<string>'x-postpress-app')
+@customElement('x-postpress-app')
 export default class extends LitElement {
-  drawer: AppDrawerElement | null = <null>null
+  drawer: AppDrawerElement | null = null
 
   @property({ type: String })
-  siteTitle: string = <string>''
+  siteTitle: string = ''
 
   @property({ type: String })
-  siteUrl: string = <string>''
+  siteUrl: string = ''
 
   constructor() {
     super()
   }
 
   // hamburger menu click handler
-  burgerHandler(e: Event) {
+  burgerHandler(e: Event): void {
     e.preventDefault()
 
     if (this.drawer) {
-      this.drawer.style.display = <string>'inherit'
+      this.drawer.style.display = 'inherit'
       this.drawer.toggle()
     }
   }
 
-  firstUpdated() {
+  firstUpdated(): void {
     this.drawer = this.shadowRoot
-      ? this.shadowRoot.querySelector(<string>'app-drawer')
-      : <null>null
+      ? this.shadowRoot.querySelector('app-drawer')
+      : null
   }
 
-  render() {
-    return <TemplateResult>html`
-      ${<TemplateResult>styles}
+  render(): TemplateResult {
+    return html`
+      ${styles}
       <app-header reveals>
         <app-toolbar>
           <div id="toolbar-child">
             <x-postpress-hamburger @click="${<(e: Event) => void>this.burgerHandler}"></x-postpress-hamburger>
-            <div main-title><a href=${<string>this.siteUrl}>${<string>this.siteTitle}</a></div>
+            <div main-title><a href=${this.siteUrl}>${this.siteTitle}</a></div>
           </div>
         </app-toolbar>
       </app-header>

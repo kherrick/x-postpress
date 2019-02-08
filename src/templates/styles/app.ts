@@ -1,6 +1,6 @@
-import { html, TemplateResult } from 'lit-element'
+import { html } from 'lit-element'
 
-export default <TemplateResult>html`
+export default html`
   <style>
     app-header {
       color: #fff;

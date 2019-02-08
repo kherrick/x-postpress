@@ -25,18 +25,4 @@ export const loading = [
     }
   })
 ]
-export default (
-  articles = [
-    {
-      content: {
-        rendered: ''
-      },
-      date_gmt: '',
-      errorMessage: '',
-      link: '',
-      title: {
-        rendered: ''
-      }
-    }
-  ]
-) => articles.map(res => article(res))
+export default articles => articles.map(res => article(res))

@@ -13,21 +13,21 @@ export interface PostProps {
 }
 
 export const buildQueryString = (props: PostProps, supportedKeys: string[]) => {
-  let result: string = <string>''
+  let result: string = ''
 
-  Object.keys(<PostProps>props).forEach((key: string) => {
-    if (supportedKeys.indexOf(<string>key) === -1) {
+  Object.keys(props).forEach((key: string) => {
+    if (supportedKeys.indexOf(key) === -1) {
       return
     }
 
-    if (!<string>result && <string>props[key]) {
-      result = <string>`?${key}=${props[key]}`
+    if (!result && props[key]) {
+      result = `?${key}=${props[key]}`
 
       return
     }
 
-    if (<string>result && <string>props[key]) {
-      result = <string>`${result}&${key}=${props[key]}`
+    if (result && props[key]) {
+      result = `${result}&${key}=${props[key]}`
 
       return
     }
@@ -37,12 +37,12 @@ export const buildQueryString = (props: PostProps, supportedKeys: string[]) => {
 }
 
 export const formatDate = (timestring: string): string => {
-  const pad = (v: number): string => (<number>v < <number>10 ? <string>`0${v}` : <string>`${v}`)
-  const dateString: string = timestring.split(<string>'T')[0]
+  const pad = (v: number): string => v < 10 ? `0${v}` : `${v}`
+  const dateString: string = timestring.split('T')[0]
 
-  const date: Date = <Date>new Date(<string>dateString)
-  const year: string = <string>date.getUTCFullYear().toString()
-  const day: string = <string>pad(<number>date.getUTCDate())
+  const date: Date = new Date(dateString)
+  const year: string = date.getUTCFullYear().toString()
+  const day: string = pad(date.getUTCDate())
   const weekday: string = [
       'Sunday',
       'Monday',
@@ -52,7 +52,7 @@ export const formatDate = (timestring: string): string => {
       'Friday',
       'Saturday'
     ][
-      <number>date.getUTCDay()
+      date.getUTCDay()
     ]
 
   const month: string = [
@@ -69,43 +69,38 @@ export const formatDate = (timestring: string): string => {
     'November',
     'December'
   ][
-    <number>date.getUTCMonth()
+    date.getUTCMonth()
   ]
 
-  return `${<string>weekday}, ${<string>day} ${<string>month} ${<string>year}`
+  return `${weekday}, ${day} ${month} ${year}`
 }
 
 export const removeSubdomain = (link: string, subDomain: string) => (
-  <string>link
-    ? <string>link.replace(<string>`//${<string>subDomain}.`, '//')
-    : <string>''
+  link
+    ? link.replace(`//${subDomain}.`, '//')
+    : ''
 )
 
 export const getPosts = (apiUrl: string) =>
   new Promise((resolve: Function, reject: Function): Promise<Function> =>
-    fetch(<string>apiUrl)
+    fetch(apiUrl)
       .then((res: Response) => {
-        if (<boolean>res.ok) {
-          return <Promise<Response>>res.json()
+        if (res.ok) {
+          return res.json()
         }
 
         throw new Error(`status: ${res['status']}
           ${res['statusText']
-            ? <string>` | statusText: ${res['statusText']}`
-            : <string>''
+            ? ` | statusText: ${res['statusText']}`
+            : ''
           }
         `)
       })
-      .then((response: Response) => resolve(<Response>response))
-      .catch((err: Response) => reject(<Response>err))
+      .then((response: Response) => resolve(response))
+      .catch((err: Response) => reject(err))
   )
 
 export const getPostsUrl = (
   props: PostProps,
   supportedKeys: string[]
-) => `${<string>props[<string>'apiHost']}${<string>props[<string>'apiPath']}${<string>'/posts'}${
-  <string>buildQueryString(
-    <PostProps>props,
-    <string[]>supportedKeys
-  )
-}`
+) => `${props['apiHost']}${props['apiPath']}${'/posts'}${buildQueryString(props, supportedKeys)}`
