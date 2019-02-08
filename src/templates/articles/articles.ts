@@ -7,48 +7,35 @@ export interface ErrMessage {
 
 export const getErrorMessageArticle = (err: ErrMessage): TemplateResult[] =>
   [
-    <TemplateResult>article(<ArticlePayload>{
+    article({
       errorMessage: `${err['message']}`,
-      date_gmt: <string>'',
-      link: <string>'',
-      title: <object>{
-        rendered: <string>'Error'
+      date_gmt: '',
+      link: '',
+      title: {
+        rendered: 'Error'
       },
-      content: <object>{
-        rendered: <string>'<p>Posts are unavailable. Please check the error and try again.</p>'
+      content: {
+        rendered: '<p>Posts are unavailable. Please check the error and try again.</p>'
       }
     })
   ]
 
 export const loading: TemplateResult[] = [
-  <TemplateResult>article(<ArticlePayload>{
-    errorMessage: <string>'',
-    date_gmt: <string>'',
-    link: <string>'',
-    title: <object>{
-      rendered: <string>'Loading...'
+  article({
+    errorMessage: '',
+    date_gmt: '',
+    link: '',
+    title: {
+      rendered: 'Loading...'
     },
-    content: <object>{
-      rendered: <string>''
+    content: {
+      rendered: ''
     }
   })
 ]
 
-export default (
-  articles: ArticlePayload[] = [
-    <ArticlePayload>{
-      content: <object>{
-        rendered: <string>''
-      },
-      date_gmt: <string>'',
-      errorMessage: <string>'',
-      link: <string>'',
-      title: <object>{
-        rendered: <string>''
-      }
-    }
-  ]
-): TemplateResult[] =>
+export default (articles: ArticlePayload[]): TemplateResult[] =>
   articles.map(
-    (res: ArticlePayload): TemplateResult => article(<ArticlePayload>res)
+    (res): TemplateResult =>
+      article(res)
   )
