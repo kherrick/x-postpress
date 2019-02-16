@@ -8,70 +8,67 @@ define(["exports"],function(_exports){"use strict";Object.defineProperty(_export
     <p>${unsafeHTML(content.rendered)}</p>
     <hr />
   </article>
-`;_exports.$articleDefault=article;var article$1={default:article};_exports.$article=article$1;const getErrorMessageArticle=err=>[article({errorMessage:`${err.message}`,date_gmt:"",link:"",title:{rendered:"Error"},content:{rendered:"<p>Posts are unavailable. Please check the error and try again.</p>"}})];_exports.getErrorMessageArticle=getErrorMessageArticle;const loading=[article({errorMessage:"",date_gmt:"",link:"",title:{rendered:"Loading..."},content:{rendered:""}})];_exports.loading=loading;var articles=articles=>articles.map(res=>article(res));_exports.$articlesDefault=articles;var articles$1={getErrorMessageArticle:getErrorMessageArticle,loading:loading,default:articles};_exports.$articles=articles$1;var styles=html`
-  <style>
-    a,
-    a:link,
-    a:visited {
-      color: var(--a-color, #000);
-      text-decoration: var(--a-text-decoration, none);
-    }
+`;_exports.$articleDefault=article;var article$1={default:article};_exports.$article=article$1;const getErrorMessageArticle=err=>[article({errorMessage:`${err.message}`,date_gmt:"",link:"",title:{rendered:"Error"},content:{rendered:"<p>Posts are unavailable. Please check the error and try again.</p>"}})];_exports.getErrorMessageArticle=getErrorMessageArticle;const loading=[article({errorMessage:"",date_gmt:"",link:"",title:{rendered:"Loading..."},content:{rendered:""}})];_exports.loading=loading;var articles=articles=>articles.map(res=>article(res));_exports.$articlesDefault=articles;var articles$1={getErrorMessageArticle:getErrorMessageArticle,loading:loading,default:articles};_exports.$articles=articles$1;var styles=css`
+  a,
+  a:link,
+  a:visited {
+    color: var(--a-color, #000);
+    text-decoration: var(--a-text-decoration, none);
+  }
 
-    a:hover {
-      text-decoration: var(--a-hover-text-decoration, underline);
-    }
+  a:hover {
+    text-decoration: var(--a-hover-text-decoration, underline);
+  }
 
-    article {
-      clear: var(--article-clear, inherit);
-      margin-bottom: var(--article-margin-bottom, 1rem);
-      margin-left: var(--article-margin-left, auto);
-      margin-right: var(--article-margin-right, auto);
-      margin-top: var(--article-margin-top, 0);
-      width: var(--article-width, 80%);
-    }
+  article {
+    clear: var(--article-clear, inherit);
+    margin-bottom: var(--article-margin-bottom, 1rem);
+    margin-left: var(--article-margin-left, auto);
+    margin-right: var(--article-margin-right, auto);
+    margin-top: var(--article-margin-top, 0);
+    width: var(--article-width, 80%);
+  }
 
-    h1 {
-      font-size: var(--h1-font-size, inherit);
-    }
+  h1 {
+    font-size: var(--h1-font-size, inherit);
+  }
 
-    h2 {
-      color: var(--h2-color, #333);
-      font-size: var(--h2-font-size, smaller);
-    }
+  h2 {
+    color: var(--h2-color, #333);
+    font-size: var(--h2-font-size, smaller);
+  }
 
-    hr {
-      clear: var(--hr-clear, both);
-      display: var(--hr-display, block);
-    }
+  hr {
+    clear: var(--hr-clear, both);
+    display: var(--hr-display, block);
+  }
 
-    img {
-      display: var(--img-display, inherit);
-      float: var(--img-float, inherit);
-      height: var(--img-height, auto);
-      max-height: var(--img-max-height, inherit);
-      max-width: var(--img-max-width, 100%);
-      padding-bottom: var(--img-padding-bottom, inherit);
-      padding-left: var(--img-padding-left, inherit);
-      padding-right: var(--img-padding-right, inherit);
-      padding-top: var(--img-padding-top, inherit);
-      width: var(--img-width, auto);
-    }
+  img {
+    display: var(--img-display, inherit);
+    float: var(--img-float, inherit);
+    height: var(--img-height, auto);
+    max-height: var(--img-max-height, inherit);
+    max-width: var(--img-max-width, 100%);
+    padding-bottom: var(--img-padding-bottom, inherit);
+    padding-left: var(--img-padding-left, inherit);
+    padding-right: var(--img-padding-right, inherit);
+    padding-top: var(--img-padding-top, inherit);
+    width: var(--img-width, auto);
+  }
 
-    ul {
-      list-style-type: var(--ul-list-style-type, inherit);
-    }
+  ul {
+    list-style-type: var(--ul-list-style-type, inherit);
+  }
 
-    p {
-      clear: var(--p-clear, inherit);
-      text-align: var(--p-text-align, inherit);
-    }
+  p {
+    clear: var(--p-clear, inherit);
+    text-align: var(--p-text-align, inherit);
+  }
 
-    pre {
-      overflow: auto;
-    }
-  </style>
+  pre {
+    overflow: auto;
+  }
 `;_exports.$xPostpressDefault$1=styles;var xPostpress={default:styles};_exports.$xPostpress$1=xPostpress;var __decorate=void 0||function(decorators,target,key,desc){var c=arguments.length,r=3>c?target:null===desc?desc=Object.getOwnPropertyDescriptor(target,key):desc,d;if("object"===typeof Reflect&&"function"===typeof Reflect.decorate)r=Reflect.decorate(decorators,target,key,desc);else for(var i=decorators.length-1;0<=i;i--)if(d=decorators[i])r=(3>c?d(r):3<c?d(target,key,r):d(target,key))||r;return 3<c&&r&&Object.defineProperty(target,key,r),r};let default_1=class default_1 extends LitElement{constructor(){super();this.apiHost="https://content.example.com";this.apiPath="/wp-json/wp/v2";this.categories="";this.include="";this.page="";this.per_page="";this.tags="";this.search="";this.slug="";this.urlAttributes=["apiHost","apiPath"];this.builtQueryStringAttributes=["categories","include","page","per_page","search","slug","tags"];this.didGetPosts=!1;this.articles=loading}requestPosts(){const postsUrl=getPostsUrl({apiHost:this.apiHost,apiPath:this.apiPath,categories:this.categories,include:this.include,page:this.page,per_page:this.per_page,search:this.search,slug:this.slug,tags:this.tags},this.builtQueryStringAttributes);getPosts(postsUrl).then(res=>articles(res)).catch(err=>getErrorMessageArticle(err)).then(articles$$1=>{this.didGetPosts=!0;this.articles=articles$$1})}firstUpdated(){this.requestPosts()}updated(changedProperties){if(this.didGetPosts){const shouldGetPostsAttributes=[...this.urlAttributes,...this.builtQueryStringAttributes],props=changedProperties.keys();let prop=props.next();while(!prop.done){if(-1!==shouldGetPostsAttributes.indexOf(prop.value)){this.requestPosts();break}prop=props.next()}}}render(){return html`
-      ${styles}
       <slot name="articles"></slot>
       ${this.articles}
-    `}};__decorate([property({type:String,reflect:!0})],default_1.prototype,"apiHost",void 0);__decorate([property({type:String,reflect:!0})],default_1.prototype,"apiPath",void 0);__decorate([property({type:String,reflect:!0})],default_1.prototype,"categories",void 0);__decorate([property({type:String,reflect:!0})],default_1.prototype,"include",void 0);__decorate([property({type:String,reflect:!0})],default_1.prototype,"page",void 0);__decorate([property({type:String,reflect:!0})],default_1.prototype,"per_page",void 0);__decorate([property({type:String,reflect:!0})],default_1.prototype,"tags",void 0);__decorate([property({type:String,reflect:!0})],default_1.prototype,"search",void 0);__decorate([property({type:String,reflect:!0})],default_1.prototype,"slug",void 0);__decorate([property({type:Array})],default_1.prototype,"urlAttributes",void 0);__decorate([property({type:Array})],default_1.prototype,"builtQueryStringAttributes",void 0);__decorate([property({type:Boolean})],default_1.prototype,"didGetPosts",void 0);__decorate([property({type:Object,noAccessor:!1})],default_1.prototype,"articles",void 0);default_1=__decorate([customElement("x-postpress")],default_1);var default_1$1=default_1;_exports.$xPostpressDefault=default_1$1;var xPostpress$1={default:default_1$1};_exports.$xPostpress=xPostpress$1});
+    `}};default_1.styles=styles;__decorate([property({type:String,reflect:!0})],default_1.prototype,"apiHost",void 0);__decorate([property({type:String,reflect:!0})],default_1.prototype,"apiPath",void 0);__decorate([property({type:String,reflect:!0})],default_1.prototype,"categories",void 0);__decorate([property({type:String,reflect:!0})],default_1.prototype,"include",void 0);__decorate([property({type:String,reflect:!0})],default_1.prototype,"page",void 0);__decorate([property({type:String,reflect:!0})],default_1.prototype,"per_page",void 0);__decorate([property({type:String,reflect:!0})],default_1.prototype,"tags",void 0);__decorate([property({type:String,reflect:!0})],default_1.prototype,"search",void 0);__decorate([property({type:String,reflect:!0})],default_1.prototype,"slug",void 0);__decorate([property({type:Array})],default_1.prototype,"urlAttributes",void 0);__decorate([property({type:Array})],default_1.prototype,"builtQueryStringAttributes",void 0);__decorate([property({type:Boolean})],default_1.prototype,"didGetPosts",void 0);__decorate([property({type:Object,noAccessor:!1})],default_1.prototype,"articles",void 0);default_1=__decorate([customElement("x-postpress")],default_1);var default_1$1=default_1;_exports.$xPostpressDefault=default_1$1;var xPostpress$1={default:default_1$1};_exports.$xPostpress=xPostpress$1});

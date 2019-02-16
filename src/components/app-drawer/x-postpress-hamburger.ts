@@ -3,9 +3,10 @@ import styles from '../../templates/styles/x-postpress-hamburger'
 
 @customElement('x-postpress-hamburger')
 export default class extends LitElement {
+  static styles = styles
+
   render(): TemplateResult {
     return html`
-      ${styles}
       <a href="#" id="hamburger">
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
           <path d="M0 0h24v24H0z" fill="black" />

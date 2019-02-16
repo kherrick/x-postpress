@@ -1,13 +1,11 @@
-import { html } from 'lit-element'
-export default html`
-  <style>
-    a {
-      float: left;
-    }
+import { css } from 'lit-element'
+export default css`
+  a {
+    float: left;
+  }
 
-    svg {
-      vertical-align: middle;
-      padding-right: 2rem;
-    }
-  </style>
+  svg {
+    vertical-align: middle;
+    padding-right: 2rem;
+  }
 `

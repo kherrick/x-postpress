@@ -83,12 +83,12 @@ let default_1 = class default_1 extends LitElement {
   }
   render() {
     return html`
-      ${styles}
       <slot name="articles"></slot>
       ${this.articles}
     `
   }
 }
+default_1.styles = styles
 __decorate([property({ type: String, reflect: true })], default_1.prototype, 'apiHost', void 0)
 __decorate([property({ type: String, reflect: true })], default_1.prototype, 'apiPath', void 0)
 __decorate([property({ type: String, reflect: true })], default_1.prototype, 'categories', void 0)

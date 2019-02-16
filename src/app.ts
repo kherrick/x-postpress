@@ -9,6 +9,8 @@ import styles from './templates/styles/app'
 
 @customElement('x-postpress-app')
 export default class extends LitElement {
+  static styles = styles
+
   drawer: AppDrawerElement | null = null
 
   @property({ type: String })
@@ -39,7 +41,6 @@ export default class extends LitElement {
 
   render(): TemplateResult {
     return html`
-      ${styles}
       <app-header reveals>
         <app-toolbar>
           <div id="toolbar-child">

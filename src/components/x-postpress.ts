@@ -6,6 +6,8 @@ import styles from '../templates/styles/x-postpress'
 
 @customElement('x-postpress')
 export default class extends LitElement {
+  static styles = styles
+
   // set defaults
   @property({ type: String, reflect: true })
   apiHost: string = 'https://content.example.com'
@@ -118,7 +120,6 @@ export default class extends LitElement {
 
   render(): TemplateResult {
     return html`
-      ${<TemplateResult>styles}
       <slot name="articles"></slot>
       ${<TemplateResult[]>this.articles}
     `
