@@ -13,10 +13,9 @@ var __decorate =
   }
 import { customElement, html, LitElement } from 'lit-element'
 import styles from '../../templates/styles/x-postpress-hamburger'
-let default_1 = class extends LitElement {
+let default_1 = class default_1 extends LitElement {
   render() {
     return html`
-      ${styles}
       <a href="#" id="hamburger">
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
           <path d="M0 0h24v24H0z" fill="black" />
@@ -26,5 +25,6 @@ let default_1 = class extends LitElement {
     `
   }
 }
+default_1.styles = styles
 default_1 = __decorate([customElement('x-postpress-hamburger')], default_1)
 export default default_1

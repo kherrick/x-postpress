@@ -38,7 +38,6 @@ let default_1 = class default_1 extends LitElement {
   }
   render() {
     return html`
-      ${styles}
       <app-header reveals>
         <app-toolbar>
           <div id="toolbar-child">
@@ -52,6 +51,7 @@ let default_1 = class default_1 extends LitElement {
     `
   }
 }
+default_1.styles = styles
 __decorate([property({ type: String })], default_1.prototype, 'siteTitle', void 0)
 __decorate([property({ type: String })], default_1.prototype, 'siteUrl', void 0)
 default_1 = __decorate([customElement('x-postpress-app')], default_1)
