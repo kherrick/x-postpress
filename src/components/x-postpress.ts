@@ -10,7 +10,7 @@ export default class extends LitElement {
 
   // set defaults
   @property({ type: String, reflect: true })
-  apiHost: string = 'https://content.example.com'
+  apiHost: string = ''
   @property({ type: String, reflect: true })
   apiPath: string = '/wp-json/wp/v2'
   @property({ type: String, reflect: true })
@@ -91,11 +91,13 @@ export default class extends LitElement {
   }
 
   firstUpdated() {
-    this.requestPosts()
+    if (this.apiHost) {
+      this.requestPosts()
+    }
   }
 
   updated(changedProperties: Map<string, string>): void {
-    if (this.didGetPosts) {
+    if (this.didGetPosts && this.apiHost) {
       const shouldGetPostsAttributes: Array<string> = [
         ...this.urlAttributes,
         ...this.builtQueryStringAttributes
@@ -121,7 +123,7 @@ export default class extends LitElement {
   render(): TemplateResult {
     return html`
       <slot name="articles"></slot>
-      ${<TemplateResult[]>this.articles}
+      ${this.apiHost && <TemplateResult[]>this.articles}
     `
   }
 }
