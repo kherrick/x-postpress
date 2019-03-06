@@ -19,7 +19,7 @@ let default_1 = class default_1 extends LitElement {
   constructor() {
     super()
     // set defaults
-    this.apiHost = 'https://content.example.com'
+    this.apiHost = ''
     this.apiPath = '/wp-json/wp/v2'
     // a single number, or comma separated list of numbers
     this.categories = ''
@@ -65,10 +65,12 @@ let default_1 = class default_1 extends LitElement {
       })
   }
   firstUpdated() {
-    this.requestPosts()
+    if (this.apiHost) {
+      this.requestPosts()
+    }
   }
   updated(changedProperties) {
-    if (this.didGetPosts) {
+    if (this.didGetPosts && this.apiHost) {
       const shouldGetPostsAttributes = [...this.urlAttributes, ...this.builtQueryStringAttributes]
       const props = changedProperties.keys()
       let prop = props.next()
@@ -84,7 +86,7 @@ let default_1 = class default_1 extends LitElement {
   render() {
     return html`
       <slot name="articles"></slot>
-      ${this.articles}
+      ${this.apiHost && this.articles}
     `
   }
 }
