@@ -1,6 +1,6 @@
 {
   "name": "x-postpress",
-  "version": "2.1.10",
+  "version": "2.1.11",
   "license": "BSD-3-Clause",
   "homepage": "https://github.com/kherrick/x-postpress#readme",
   "repository": {
@@ -8,6 +8,7 @@
     "url": "https://github.com/kherrick/x-postpress.git"
   },
   "main": "./build/esm-bundled/src/components/x-postpress.js",
+  "module": "./build/esm-bundled/src/components/x-postpress.js",
   "scripts": {
     "build:app": "./bin/build-app && npx gulp prpl-server",
     "build:gh-pages:serve:local": "npm run build:gh-pages && npm run serve:app:github",
