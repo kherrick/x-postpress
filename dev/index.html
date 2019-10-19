@@ -7,7 +7,6 @@
   <meta name="theme-color" content="#000000">
 
   <base href="/">
-  <!-- <base href="/x-postpress/"> -->
 
   <link rel="manifest" href="manifest.json">
   <link rel="icon" href="favicon.ico" type="image/x-icon" />
@@ -15,28 +14,34 @@
   <title>XPostpress</title>
 </head>
 <body>
-  <x-postpress
-    apiHost="https://content.example.com"
-    removeArticleHeaderLinkSubDomain="true"
-    articleHeaderLinkSubDomain="content"
-    per_page="1"
-  >
-    <div slot="articles">
-      <article>
-        <h1>mock article header</h1>
-        <p>mock article content...</p>
-      </article>
-    </div>
-  </x-postpress>
+  <div id="app"></div>
+
+  <script type="module">
+    import { html, render } from 'lit-html'
+
+    render(
+      html`
+        <x-postpress
+          apiHost="https://content.example.com"
+          removeArticleHeaderLinkSubDomain="true"
+          articleHeaderLinkSubDomain="content"
+          per_page="1"
+        >
+          <div slot="articles">
+            <article>
+              <h1>mock article header</h1>
+              <p>mock article content...</p>
+            </article>
+          </div>
+        </x-postpress>
+      `,
+      document.querySelector('#app')
+    )
+  </script>
   <script type="module">
     import { defineCustomElements } from './dist/esm/defineCustomElements.js'
 
     defineCustomElements()
   </script>
-  <!-- <script type="module">
-    import registerServiceWorker from './service-worker/registerServiceWorker.js'
-
-    registerServiceWorker(document.querySelector('base').href.slice(0, -1))
-  </script> -->
 </body>
 </html>

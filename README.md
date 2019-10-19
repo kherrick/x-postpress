@@ -5,7 +5,6 @@ A Web Component that fetches [WordPress](https://wordpress.org/) posts [from the
 ## About
 
   * Built using [LitElement](https://lit-element.polymer-project.org/) and [TypeScript](https://www.typescriptlang.org/)
-  * [Supports Internet Explorer 11](https://github.com/kherrick/x-postpress/tree/master/build/es5-bundled)
 
 ## Try
 
@@ -62,39 +61,14 @@ A Web Component that fetches [WordPress](https://wordpress.org/) posts [from the
   </x-postpress>
   ```
 
-## Misc
-
-* An [Angular repository](https://github.com/kherrick/angular-x-postpress) and [unpkg examples](https://github.com/kherrick/x-postpress/tree/master/examples) are available for experimentation
-* Try using devtools to change the `apiHost` attribute within the `x-postpress` tag to render another <a href="https://developer.wordpress.org/rest-api/reference/posts/#list-posts">REST API posts endpoint</a>
-* If building an app with x-postpress, the included [index.html](index.html) checks the query string for parameters to override particular custom element attributes (example):
-  ```html
-  <a
-    href="http://localhost:8081/?apiHost=https://content.example.com"
-  >
-    example.com
-  </a>
-  ```
-
-<div>
-  <a href="https://kherrick.github.io/x-postpress/">
-    <img alt="postpress logo" src="images/manifest/icon-48x48.png" width="32px" />
-  </a>
-</div>
-
-<div>
-  <a href="https://saucelabs.com/">
-    <img alt="Sauce Labs build status" src="images/assets/Sauce-Labs_Horiz_Red-Grey_RGB_200x28.png" />
-  </a>
-</div>
-
-<div>
-  <a href="https://travis-ci.org/kherrick/x-postpress/">
-    <img alt="Travis CI build status" src="https://api.travis-ci.org/kherrick/x-postpress.png?branch=master" />
-  </a>
-</div>
-
 <div>
   <a href="https://www.webcomponents.org/element/x-postpress">
     <img alt="published on webcomponents.org" src="https://img.shields.io/badge/webcomponents.org-published-blue.png" />
+  </a>
+</div>
+
+<div>
+  <a href="https://kherrick.github.io/x-postpress/">
+    <img alt="postpress logo" src="icons/icon-72x72.png" width="32px" />
   </a>
 </div>
