@@ -56,26 +56,20 @@ class XPostpress extends LitElement {
     'tags'
   ]
 
-  // set only once, when posts are first retrieved
-  @property({ type: Boolean })
-  didGetPosts: boolean = false
-
   // defaulted to the "loading article"
   @property({ type: Object, noAccessor: false })
   articles: TemplateResult[] = loading
 
-  constructor() {
-    super()
-  }
-
   // https://developer.wordpress.org/rest-api/reference/posts/#list-posts
   requestPosts(): void {
+    const isAttributeValid = (attr: string) => attr && attr !== 'undefined' ? attr : ''
+
     const postsUrl = getPostsUrl(
       {
         apiHost: this.apiHost,
         apiPath: this.apiPath,
         categories: this.categories,
-        include: this.include,
+        include: isAttributeValid(this.include),
         page: this.page,
         per_page: this.per_page,
         search: this.search,
@@ -89,7 +83,6 @@ class XPostpress extends LitElement {
       .then((res): TemplateResult[] => articles(<ArticlePayload[]>res, this.removeArticleHeaderLinkSubDomain, this.articleHeaderLinkSubDomain))
       .catch((err): TemplateResult[] => getErrorMessageArticle(err))
       .then((articles): void => {
-        this.didGetPosts = true
         this.articles = articles
       })
   }
@@ -101,7 +94,7 @@ class XPostpress extends LitElement {
   }
 
   updated(changedProperties: Map<string, string>): void {
-    if (this.didGetPosts && this.apiHost) {
+    if (this.apiHost) {
       const shouldGetPostsAttributes: Array<string> = [
         ...this.urlAttributes,
         ...this.builtQueryStringAttributes
