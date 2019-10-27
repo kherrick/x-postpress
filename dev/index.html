@@ -27,12 +27,16 @@
           articleHeaderLinkSubDomain="content"
           per_page="1"
         >
-          <div slot="articles">
-            <article>
-              <h1>mock article header</h1>
-              <p>mock article content...</p>
-            </article>
-          </div>
+          <article slot="articles">
+            <h1>mock article 1 header</h1>
+            <p>mock article 1 content...</p>
+            <hr>
+          </article>
+          <article slot="articles">
+            <h1>mock article 2 header</h1>
+            <p>mock article 2 content...</p>
+            <hr>
+          </article>
         </x-postpress>
       `,
       document.querySelector('#app')

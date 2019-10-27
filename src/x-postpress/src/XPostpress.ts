@@ -60,6 +60,10 @@ class XPostpress extends LitElement {
   @property({ type: Object, noAccessor: false })
   articles: TemplateResult[] = loading
 
+  // defaulted to the "loading article"
+  @property({ type: Object, noAccessor: false })
+  articlePayload: ArticlePayload[] = []
+
   // https://developer.wordpress.org/rest-api/reference/posts/#list-posts
   requestPosts(): void {
     const isAttributeValid = (attr: string) => attr && attr !== 'undefined' ? attr : ''
@@ -79,8 +83,22 @@ class XPostpress extends LitElement {
       this.builtQueryStringAttributes
     )
 
+    if (this.articlePayload.length > 0) {
+      this.articles = articles(
+        <ArticlePayload[]>this.articlePayload,
+        this.removeArticleHeaderLinkSubDomain,
+        this.articleHeaderLinkSubDomain
+      )
+
+      return
+    }
+
     getPosts(postsUrl)
-      .then((res): TemplateResult[] => articles(<ArticlePayload[]>res, this.removeArticleHeaderLinkSubDomain, this.articleHeaderLinkSubDomain))
+      .then((res): TemplateResult[] => articles(
+        <ArticlePayload[]>res,
+        this.removeArticleHeaderLinkSubDomain,
+        this.articleHeaderLinkSubDomain
+      ))
       .catch((err): TemplateResult[] => getErrorMessageArticle(err))
       .then((articles): void => {
         this.articles = articles

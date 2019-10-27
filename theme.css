@@ -49,14 +49,6 @@ ul li ul li {
   margin-left: 0.5rem;
 }
 
-article {
-  margin-bottom: 1rem;
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: 0;
-  width: 80%;
-}
-
 article hr {
   clear: both;
   display: block;

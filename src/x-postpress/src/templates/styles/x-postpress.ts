@@ -12,7 +12,7 @@ export default css`
     text-decoration: var(--a-hover-text-decoration, underline);
   }
 
-  article {
+  article, ::slotted(article) {
     clear: var(--article-clear, inherit);
     margin-bottom: var(--article-margin-bottom, 1rem);
     margin-left: var(--article-margin-left, auto);
