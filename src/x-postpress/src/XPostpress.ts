@@ -105,12 +105,6 @@ class XPostpress extends LitElement {
       })
   }
 
-  firstUpdated() {
-    if (this.apiHost) {
-      this.requestPosts()
-    }
-  }
-
   updated(changedProperties: Map<string, string>): void {
     if (this.apiHost) {
       const shouldGetPostsAttributes: Array<string> = [
