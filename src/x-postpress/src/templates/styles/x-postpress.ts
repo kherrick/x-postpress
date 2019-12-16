@@ -4,66 +4,77 @@ export default css`
   a,
   a:link,
   a:visited {
-    color: var(--a-color, #000);
-    text-decoration: var(--a-text-decoration, none);
+    color: var(--x-postpress-a-color, #000);
+    text-decoration: var(--x-postpress-a-text-decoration, none);
   }
 
   a:hover {
-    text-decoration: var(--a-hover-text-decoration, underline);
+    text-decoration: var(--x-postpress-a-hover-text-decoration, underline);
   }
 
   article, ::slotted(article) {
-    clear: var(--article-clear, inherit);
-    margin-bottom: var(--article-margin-bottom, 1rem);
-    margin-left: var(--article-margin-left, auto);
-    margin-right: var(--article-margin-right, auto);
-    margin-top: var(--article-margin-top, 0);
-    width: var(--article-width, 80%);
+    clear: var(--x-postpress-article-clear, inherit);
+    margin-bottom: var(--x-postpress-article-margin-bottom, 1rem);
+    margin-left: var(--x-postpress-article-margin-left, auto);
+    margin-right: var(--x-postpress-article-margin-right, auto);
+    margin-top: var(--x-postpress-article-margin-top, 0);
+    width: var(--x-postpress-article-width, 80%);
   }
 
   article .gallery {
-    display: var(--article-gallery-display, inherit);
+    display: var(--x-postpress-article-gallery-display, inherit);
   }
 
   article .gallery-item {
-    margin: var(--article-gallery-item-margin, inherit);
-    flex: var(--article-gallery-item-flex, inherit);
+    margin: var(--x-postpress-article-gallery-item-margin, inherit);
+    flex: var(--x-postpress-article-gallery-item-flex, inherit);
   }
 
   h1 {
-    font-size: var(--h1-font-size, inherit);
+    color: var(--x-postpress-h1-color, inherit);
+    font-weight: var(--x-postpress-h1-font-weight, inherit);
+    font-size: var(--x-postpress-h1-font-size, inherit);
   }
 
   h2 {
-    color: var(--h2-color, #333);
-    font-size: var(--h2-font-size, smaller);
+    color: var(--x-postpress-h2-color, #333);
+    font-size: var(--x-postpress-h2-font-size, smaller);
   }
 
   hr {
-    clear: var(--hr-clear, both);
-    display: var(--hr-display, block);
+    clear: var(--x-postpress-hr-clear, both);
+    display: var(--x-postpress-hr-display, block);
   }
 
   img {
-    display: var(--img-display, inherit);
-    float: var(--img-float, inherit);
-    height: var(--img-height, auto);
-    max-height: var(--img-max-height, inherit);
-    max-width: var(--img-max-width, 100%);
-    padding-bottom: var(--img-padding-bottom, inherit);
-    padding-left: var(--img-padding-left, inherit);
-    padding-right: var(--img-padding-right, inherit);
-    padding-top: var(--img-padding-top, inherit);
-    width: var(--img-width, auto);
+    display: var(--x-postpress-img-display, inherit);
+    float: var(--x-postpress-img-float, inherit);
+    height: var(--x-postpress-img-height, auto);
+    max-height: var(--x-postpress-img-max-height, inherit);
+    max-width: var(--x-postpress-img-max-width, 100%);
+    padding-bottom: var(--x-postpress-img-padding-bottom, inherit);
+    padding-left: var(--x-postpress-img-padding-left, inherit);
+    padding-right: var(--x-postpress-img-padding-right, inherit);
+    padding-top: var(--x-postpress-img-padding-top, inherit);
+    width: var(--x-postpress-img-width, auto);
   }
 
   ul {
-    list-style-type: var(--ul-list-style-type, inherit);
+    display: var(--x-postpress-ul-display, inherit);
+    list-style-type: var(--x-postpress-ul-list-style-type, inherit);
+    margin: var(--x-postpress-ul-margin, inherit);
+    padding: var(--x-postpress-ul-padding, inherit);
+  }
+
+  li {
+    display: var(--x-postpress-li-display, inherit);
+    margin: var(--x-postpress-li-margin, inherit);
+    padding: var(--x-postpress-li-padding, inherit);
   }
 
   p {
-    clear: var(--p-clear, inherit);
-    text-align: var(--p-text-align, inherit);
+    clear: var(--x-postpress-p-clear, inherit);
+    text-align: var(--x-postpress-p-text-align, inherit);
   }
 
   pre {
