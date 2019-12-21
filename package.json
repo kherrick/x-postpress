@@ -1,6 +1,6 @@
 {
   "name": "x-postpress",
-  "version": "3.0.0-alpha.5",
+  "version": "3.0.0-alpha.6",
   "description": "A Web Component that fetches WordPress posts from the REST API based on attributes set on the element.",
   "author": "x-postpress",
   "main": "dist/umd/module.js",

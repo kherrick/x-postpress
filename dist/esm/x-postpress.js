@@ -1,4 +1,4 @@
-import{c as r}from"./lit-element-6721defd.js";var t=r`
+import{c as r}from"./lit-element-6721defd.js";var i=r`
   a,
   a:link,
   a:visited {
@@ -44,12 +44,37 @@ import{c as r}from"./lit-element-6721defd.js";var t=r`
     display: var(--x-postpress-hr-display, block);
   }
 
+  .wp-block-gallery img {
+    display: var(--x-postpress-wp-block-gallery-img-display, inherit);
+    float: var(--x-postpress-wp-block-gallery-img-float, inherit);
+    height: var(--x-postpress-wp-block-gallery-img-height, auto);
+    margin-bottom: var(--x-postpress-wp-block-gallery-img-margin-bottom, inherit);
+    margin-left: var(--x-postpress-wp-block-gallery-img-margin-left, inherit);
+    margin-right: var(--x-postpress-wp-block-gallery-img-margin-right, inherit);
+    margin-top: var(--x-postpress-wp-block-gallery-img-margin-top, inherit);
+    max-height: var(--x-postpress-wp-block-gallery-img-max-height, inherit);
+    max-width: var(--x-postpress-wp-block-gallery-img-max-width, inherit);
+    min-height: var(--x-postpress-wp-block-gallery-img-min-height, inherit);
+    min-width: var(--x-postpress-wp-block-gallery-img-min-width, inherit);
+    padding-bottom: var(--x-postpress-wp-block-gallery-img-padding-bottom, inherit);
+    padding-left: var(--x-postpress-wp-block-gallery-img-padding-left, inherit);
+    padding-right: var(--x-postpress-wp-block-gallery-img-padding-right, inherit);
+    padding-top: var(--x-postpress-wp-block-gallery-img-padding-top, inherit);
+    width: var(--x-postpress-wp-block-gallery-img-width, auto);
+  }
+
   img {
     display: var(--x-postpress-img-display, inherit);
     float: var(--x-postpress-img-float, inherit);
     height: var(--x-postpress-img-height, auto);
+    margin-bottom: var(--x-postpress-img-margin-bottom, inherit);
+    margin-left: var(--x-postpress-img-margin-left, inherit);
+    margin-right: var(--x-postpress-img-margin-right, inherit);
+    margin-top: var(--x-postpress-img-margin-top, inherit);
     max-height: var(--x-postpress-img-max-height, inherit);
-    max-width: var(--x-postpress-img-max-width, 100%);
+    max-width: var(--x-postpress-img-max-width, inherit);
+    min-height: var(--x-postpress-img-min-height, inherit);
+    min-width: var(--x-postpress-img-min-width, inherit);
     padding-bottom: var(--x-postpress-img-padding-bottom, inherit);
     padding-left: var(--x-postpress-img-padding-left, inherit);
     padding-right: var(--x-postpress-img-padding-right, inherit);
@@ -78,4 +103,4 @@ import{c as r}from"./lit-element-6721defd.js";var t=r`
   pre {
     overflow: auto;
   }
-`;export default t;
+`;export default i;

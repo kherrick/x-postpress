@@ -86,4 +86,7 @@ x-postpress {
   --h1-font-size: 1.5rem;
   --img-padding-top: 2rem;
   --ul-list-style-type: none;
+  --x-postpress-img-min-width: 22rem;
+  --x-postpress-img-width: 100%;
+  --x-postpress-wp-block-gallery-img-margin-left: -6.25rem;
 }
