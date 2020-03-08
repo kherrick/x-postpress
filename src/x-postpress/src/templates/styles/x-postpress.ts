@@ -34,11 +34,13 @@ export default css`
     color: var(--x-postpress-h1-color, inherit);
     font-weight: var(--x-postpress-h1-font-weight, inherit);
     font-size: var(--x-postpress-h1-font-size, inherit);
+    text-align: var(--x-postpress-h1-text-align, initial);
   }
 
   h2 {
     color: var(--x-postpress-h2-color, #333);
     font-size: var(--x-postpress-h2-font-size, smaller);
+    text-align: var(--x-postpress-h2-text-align, initial);
   }
 
   hr {

@@ -5,4 +5,4 @@ import{_ as e}from"./tslib.es6-91ef4223.js";import{L as s,h as r,a as t}from"./l
           <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z" fill="white" />
         </svg>
       </a>
-    `}};h.styles=a;var l=h=e([t("x-postpress-hamburger")],h);export default l;
+    `}};h.styles=a,h=e([t("x-postpress-hamburger")],h);var l=h;export default l;
