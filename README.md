@@ -1,4 +1,4 @@
-# x-postpress
+# [x-postpress](https://kherrick.github.io/x-postpress/)
 
 A Web Component used to render articles. Content can be slotted or fetched over the network.
 
