@@ -1,7 +1,9 @@
-declare module 'x-postpress';
+export {};
 
-declare namespace JSX {
-  interface IntrinsicElements {
-    "x-postpress": any
+declare global {
+  namespace JSX {
+    interface IntrinsicElements {
+      'x-postpress': any;
+    }
   }
 }

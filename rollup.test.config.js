@@ -2,6 +2,9 @@ import { terser } from 'rollup-plugin-terser';
 import babel from '@rollup/plugin-babel';
 import replace from '@rollup/plugin-replace';
 import resolve from '@rollup/plugin-node-resolve';
+import common from '@rollup/plugin-commonjs';
+import json from '@rollup/plugin-json';
+import builtins from 'rollup-plugin-node-builtins';
 
 import path from 'path';
 import glob from 'glob';
@@ -20,7 +23,13 @@ export default [
       replace({
         'process.env.NODE_ENV': isProduction() ? JSON.stringify('production') : JSON.stringify('development'),
       }),
-      resolve(),
+      builtins(),
+      json(),
+      common(),
+      resolve({
+        browser: true,
+        preferBuiltins: true,
+      }),
       babel({ babelHelpers: 'bundled' }),
       isProduction()
         ? terser({

@@ -1,30 +1,25 @@
 # x-postpress
 
-A Web Component that fetches [WordPress](https://wordpress.org/) posts [from the REST API](https://developer.wordpress.org/rest-api/reference/posts/#list-posts) based on attributes set on the element.
+A Web Component used to render articles. Content can be slotted or fetched over the network.
 
 ## About
 
-  * Built using [LitElement](https://lit-element.polymer-project.org/) and [TypeScript](https://www.typescriptlang.org/)
+* Built with [custom elements](https://developer.mozilla.org/en-US/docs/Web/API/Window/customElements), [CSS custom properties](https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties), and [declarative Shadow DOM](https://web.dev/declarative-shadow-dom/) using [TypeScript](https://www.typescriptlang.org/).
 
-## Try
-
-  * [Demo the element](https://kherrick.github.io/x-postpress/) on GitHub Pages
-  * [Exercise the element](https://codesandbox.io/s/5yj96r0n9k) on CodeSandbox
-
-## Use
+## Import
 
 * Add the Web Component to the project (unpkg and npm examples)
   1. Load the custom element using a `script` tag:
       ```html
       <script
-        src="https://unpkg.com/x-postpress"
+        src="https://unpkg.com/x-postpress@3"
         type="module"
       >
       </script>
       ```
   2. Alternatively, add using `npm`:
       ```bash
-      npm i x-postpress
+      npm i x-postpress@3
       ```
       Then import the module from another file:
 
@@ -32,43 +27,67 @@ A Web Component that fetches [WordPress](https://wordpress.org/) posts [from the
       import 'x-postpress'
       ```
 
-* Add the tag into the document and style using <a href="https://github.com/kherrick/x-postpress/blob/master/src/templates/styles/x-postpress.js">available CSS custom properties</a>. Articles can be included with the provided <a href="https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_templates_and_slots">slot element</a>:
+## Use
+
+* Add the tag into the document and style. Content can slotted, or fetched over the network as json modeled on the [WordPress REST API](https://developer.wordpress.org/rest-api/) [List Posts endpoint](https://developer.wordpress.org/rest-api/reference/posts/#list-posts), as well as preparsed HTML.
+
   ```html
   <style>
-    ul {
-      list-style-type: var(--ul-list-style-type, inherit);
-    }
-
     x-postpress {
-      --ul-list-style-type: none;
+      --x-postpress-article-margin: 0 auto 1rem auto;
+      --x-postpress-h1-font-size: 1.5rem;
     }
   </style>
 
+  <!-- use the type and url attribute to fetch over the network -->
   <x-postpress
-    apiHost="https://content.example.com"
-    per_page="1"
-  >
-    <div slot="articles">
+    type="json"
+    url="https://example.com/wp-json/wp/v2/posts?include=1"
+  ></x-postpress>
+
+  <!-- pre-render or dynamically render slotted content -->
+  <x-postpress>
+    <template shadowroot="open">
+      <slot name="posts"></slot>
+    </template>
+    <section slot="posts">
       <article>
-        <h1><a href="https://example.com/1970/01/01/slotted/">
-          Article
-        </a></h1>
-        <h2>Thursday, 01 January 1970</h2>
-        <p>Lorem ipsum dolor sit amet</p>
-        <hr>
+        <h1>
+          <a href="/example-article/">
+            example-article
+          </a>
+        </h1>
+
+        <p>Lorem ipsum</p>
       </article>
-    </div>
+    </section>
   </x-postpress>
+
+  <script>
+    // https://web.dev/declarative-shadow-dom/
+    document.querySelectorAll('template[shadowroot]')
+      .forEach(template => {
+        const mode = template.getAttribute('shadowroot');
+        const shadowRoot = template.parentNode.attachShadow({
+          mode
+        });
+        shadowRoot.appendChild(template.content);
+        template.remove();
+      });
+  </script>
+
+  <script
+    src="https://unpkg.com/x-postpress@3"
+    type="module"
+  >
+  </script>
   ```
 
 <div>
   <a href="https://www.webcomponents.org/element/x-postpress">
-    <img alt="published on webcomponents.org" src="https://img.shields.io/badge/webcomponents.org-published-blue.png" />
-  </a>
-</div>
-
-<div>
-  <a href="https://kherrick.github.io/x-postpress/">
-    <img alt="postpress logo" src="icons/icon-72x72.png" width="32px" />
+    <img
+      alt="published on webcomponents.org"
+      src="https://img.shields.io/badge/webcomponents.org-published-blue.png"
+    />
   </a>
 </div>
