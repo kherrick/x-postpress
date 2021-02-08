@@ -29,7 +29,7 @@ A Web Component used to render articles. Content can be slotted or fetched over 
 
 ## Use
 
-* Add the tag into the document and style. Content can slotted, or fetched over the network as json modeled on the [WordPress REST API](https://developer.wordpress.org/rest-api/) [List Posts endpoint](https://developer.wordpress.org/rest-api/reference/posts/#list-posts), as well as preparsed HTML.
+* Add the tag into the document and style. Content can be slotted, or fetched over the network as [JSON](https://www.json.org/json-en.html) modeled on the [WordPress REST API](https://developer.wordpress.org/rest-api/) [List Posts endpoint](https://developer.wordpress.org/rest-api/reference/posts/#list-posts), as well as preparsed HTML.
 
   ```html
   <style>

@@ -1,9 +1,16 @@
 {
   "name": "x-postpress",
-  "version": "3.0.1",
+  "version": "3.0.2",
   "description": "A Web Component used to render articles.",
   "author": "x-postpress",
   "license": "AGPL-3.0",
+  "keywords": [
+    "Web Components",
+    "Custom Elements",
+    "TypeScript",
+    "WordPress",
+    "REST API"
+  ],
   "homepage": "https://kherrick.github.io/x-postpress/",
   "repository": {
     "type": "git",
