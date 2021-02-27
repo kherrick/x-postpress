@@ -43,17 +43,17 @@ export const defaultStyles = `<style>
     justify-content: flex-start;
     line-height: 1;
     margin: var(--x-postpress-article-gallery-item-margin, inherit);
-    padding: var(--x-postpress-article-gallery-item-padding, inherit)
+    padding: var(--x-postpress-article-gallery-item-padding, inherit);
   }
 
   article .gallery-columns-2 .gallery-item {
     flex-basis: 43.3%;
-    padding: 5%;
+    padding: var(--x-postpress-article-gallery-item-2col-padding, 5%);
   }
 
   article .gallery-columns-3 .gallery-item {
     flex-basis: 23.3%;
-    padding: 5%;
+    padding: var(--x-postpress-article-gallery-item-3col-padding, 5%);
   }
 
   article .gallery-icon {
@@ -161,14 +161,6 @@ export const defaultStyles = `<style>
 
   x-postpress-code {
     margin: 1rem 0;
-  }
-
-  #singlePostNavigation, #previousPost, #nextPost {
-    display: flex;
-    flex: 1;
-    justify-content: center;
-    margin: 0 1.5rem;
-    text-align: center;
   }
 </style>
 `;
